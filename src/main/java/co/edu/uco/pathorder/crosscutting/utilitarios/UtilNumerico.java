@@ -6,7 +6,7 @@ public final class UtilNumerico {
     public final static int numerico = 0;
 
     private UtilNumerico (){
-
+        super();
     }
 
     public static UtilNumerico  getInstance() {

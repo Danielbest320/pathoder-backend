@@ -22,7 +22,7 @@ public final class UtilTexto {
     }
 
     public String obtenerValorDefecto(final String valor) {
-        return obtenerValorDefecto (valor, VACIO);
+        return obtenerValorDefecto(valor, VACIO);
     }
 
     public String obtenerValorDefecto() {
