@@ -74,7 +74,7 @@ public final class FacturaEntity {
     }
 
     public static FacturaEntity obtenerValorDefecto(final FacturaEntity factura) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(factura, obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(factura, obtenerValorDefecto());
     }
 
 

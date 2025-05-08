@@ -14,11 +14,12 @@ public final class UtilNumerico {
     }
 
     public boolean esNula(final int valor) {
-        return UtilObjeto.getIntance().esNulo(valor);
+
+        return UtilObjeto.getInstance().esNulo(valor);
     };
 
     public int obtenerValorDefecto(final int valorOriginal, final int valorDefecto) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(valorOriginal, valorDefecto);
+        return UtilObjeto.getInstance().obtenerValorDefecto(valorOriginal, valorDefecto);
     }
 
     public int obtenerValorDefecto(final int valor) {

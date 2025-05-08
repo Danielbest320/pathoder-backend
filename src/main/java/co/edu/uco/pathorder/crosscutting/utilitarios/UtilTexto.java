@@ -14,16 +14,17 @@ public final class UtilTexto {
     }
 
     public boolean esNula(final String valor) {
-        return UtilObjeto.getIntance().esNulo(valor);
-    };
+        return UtilObjeto.getInstance().esNulo(valor);
+    }
 
     public String obtenerValorDefecto(final String valorOriginal, final String valorDefecto) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(valorOriginal, valorDefecto);
+        return UtilObjeto.getInstance().obtenerValorDefecto(valorOriginal, valorDefecto);
     }
 
     public String obtenerValorDefecto(final String valor) {
-        return obtenerValorDefecto(valor, VACIO);
+        return obtenerValorDefecto (valor, VACIO);
     }
+
 
     public String obtenerValorDefecto() {
         return VACIO;
