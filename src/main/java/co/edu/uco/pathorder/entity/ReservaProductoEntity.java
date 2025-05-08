@@ -1,8 +1,9 @@
 package co.edu.uco.pathorder.entity;
 
 import java.util.UUID;
+
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilNumerico;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
-import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
 public final class ReservaProductoEntity {
@@ -16,7 +17,21 @@ public final class ReservaProductoEntity {
         setId(UtilUUID.obtenerValorDefecto());
         setReserva(ReservaEntity.obtenerValorDefecto());
         setProducto(ProductoEntity.obtenerValorDefecto());
-        setCantidad(0);
+        setCantidad(UtilNumerico.getInstance().obtenerValorDefecto());
+    }
+
+    public ReservaProductoEntity(final UUID id){
+        setId(id);
+        setReserva(ReservaEntity.obtenerValorDefecto());
+        setProducto(ProductoEntity.obtenerValorDefecto());
+        setCantidad(UtilNumerico.getInstance().obtenerValorDefecto());
+    }
+
+    public ReservaProductoEntity(final UUID id, final ReservaEntity reserva, final ProductoEntity producto, final int cantidad) {
+        setId(id);
+        setReserva(reserva);
+        setProducto(producto);
+        setCantidad(cantidad);
     }
 
     public UUID getId() {
@@ -48,7 +63,7 @@ public final class ReservaProductoEntity {
     }
 
     public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+        this.cantidad = UtilNumerico.getInstance().obtenerValorDefecto(cantidad);
     }
 
     public static ReservaProductoEntity obtenerValorDefecto() {
