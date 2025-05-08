@@ -16,6 +16,9 @@ public final class UtilObjeto {
         return instancia;
     }
 
+
+    
+
     public <O> boolean esNulo(final O objeto) {
         return objeto == null;
     }
@@ -24,3 +27,6 @@ public final class UtilObjeto {
         return esNulo(valorOriginal) ? valorDefecto : valorOriginal;
     }
 }
+
+
+
