@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.entity;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilPrecio;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
@@ -20,7 +21,7 @@ public class ProductoEntity {
         setNombre(UtilTexto.getInstance().obtenerValorDefecto());
         setTipoProducto(TipoProductoEntity.obtenerValorDefecto());
         setDescripcion(UtilTexto.getInstance().obtenerValorDefecto());
-        setPrecio(0);
+        setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
         setCategoria(CategoriaEntity.obtenerValorDefecto());
     }
     public ProductoEntity(final UUID id) {
@@ -28,7 +29,7 @@ public class ProductoEntity {
         setNombre(UtilTexto.getInstance().obtenerValorDefecto());
         setTipoProducto(TipoProductoEntity.obtenerValorDefecto());
         setDescripcion(UtilTexto.getInstance().obtenerValorDefecto());
-        setPrecio(0);
+        setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
         setCategoria(CategoriaEntity.obtenerValorDefecto());
     }
 
