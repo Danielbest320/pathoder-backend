@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.entity;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFecha;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFechaHora;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
@@ -16,14 +17,14 @@ public final class NotificacionEntity {
 
     public NotificacionEntity(){
         setId(UtilUUID.obtenerValorDefecto());
-        setFecha(UtilFecha.getInstance().obtenerValorDefecto());
+        setFecha(UtilFechaHora.getInstance().obtenerValorDefecto());
         setTipoNotificacion(TipoNotificacionEntity.obtenerValorDefecto());
         setReserva(Reserva.obtenerValorDefecto());
     }
 
     public NotificacionEntity(final UUID id){
         setId(id);
-        setFecha(UtilFecha.getInstance().obtenerValorDefecto());
+        setFecha(UtilFechaHora.getInstance().obtenerValorDefecto());
         setTipoNotificacion(TipoNotificacionEntity.obtenerValorDefecto());
         setReserva(Reserva.obtenerValorDefecto());
     }
@@ -72,6 +73,6 @@ public final class NotificacionEntity {
     }
 
     public NotificacionEntity obtenerValorDefecto(final NotificacionEntity notificacionEntity, final NotificacionEntity valorDefecto) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(notificacionEntity, obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(notificacionEntity, obtenerValorDefecto());
     }
 }

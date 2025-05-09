@@ -1,9 +1,6 @@
 package co.edu.uco.pathorder.entity;
 
-import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFecha;
-import co.edu.uco.pathorder.crosscutting.utilitarios.UtilNumerico;
-import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
-import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
+import co.edu.uco.pathorder.crosscutting.utilitarios.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -19,14 +16,14 @@ public final class FacturaEntity {
     public FacturaEntity() {
         setId(UtilUUID.obtenerValorDefecto());
         setAdministrador(AdministradorEntity.obtenerValorDefecto());
-        setFecha(UtilFecha.getInstance().obtenerValorDefecto());
+        setFecha(UtilFechaHora.getInstance().obtenerValorDefecto());
         setTotal(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
     public FacturaEntity(final UUID id) {
         setId(id);
         setAdministrador(AdministradorEntity.obtenerValorDefecto());
-        setFecha(UtilFecha.getInstance().obtenerValorDefecto());
+        setFecha(UtilFechaHora.getInstance().obtenerValorDefecto());
         setTotal(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
@@ -53,15 +50,17 @@ public final class FacturaEntity {
         this.administrador = AdministradorEntity.obtenerValorDefecto(administrador);
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
+
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = UtilFecha.getInstance().obtenerValorDefecto(fecha);
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = UtilFechaHora.getInstance().obtenerValorDefecto(fecha);
     }
 
     public int getTotal() {
+
         return total;
     }
 
