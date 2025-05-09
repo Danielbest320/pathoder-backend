@@ -30,7 +30,7 @@ public class AdministradorDTO extends UsuarioDTO {
     }
 
     public static AdministradorDTO obtenerValorDefecto(final AdministradorDTO administrador) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(administrador, obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(administrador, obtenerValorDefecto());
     }
 
     public String getUsuario() {

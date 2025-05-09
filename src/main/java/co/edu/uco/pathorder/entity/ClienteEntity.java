@@ -23,6 +23,6 @@ public final class ClienteEntity extends UsuarioEntity {
     }
 
     public static ClienteEntity obtenerValorDefecto(final ClienteEntity cliente) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(cliente, obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(cliente, obtenerValorDefecto());
     }
 }

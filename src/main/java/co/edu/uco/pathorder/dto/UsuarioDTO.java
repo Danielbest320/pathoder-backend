@@ -67,7 +67,7 @@ public class UsuarioDTO {
     }
 
     public static UsuarioDTO obtenerValorDefecto(final UsuarioDTO dto) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(dto, obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(dto, obtenerValorDefecto());
     }
 
     public UUID getId() {

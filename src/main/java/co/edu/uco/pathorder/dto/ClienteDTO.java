@@ -27,7 +27,7 @@ public final class ClienteDTO extends UsuarioDTO {
     }
 
   public static ClienteDTO obtenerValorDefecto(final ClienteDTO cliente) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(cliente,obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(cliente,obtenerValorDefecto());
 
   }
 

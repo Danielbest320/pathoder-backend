@@ -67,7 +67,7 @@ public class UsuarioEntity {
     }
 
     public static UsuarioEntity obtenerValorDefecto(final UsuarioEntity usuario) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(usuario,obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(usuario,obtenerValorDefecto());
     }
 
 

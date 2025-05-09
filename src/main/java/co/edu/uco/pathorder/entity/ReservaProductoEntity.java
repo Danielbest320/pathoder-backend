@@ -71,6 +71,6 @@ public final class ReservaProductoEntity {
     }
 
     public static ReservaProductoEntity obtenerValorDefecto(ReservaProductoEntity reservaProducto) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(reservaProducto, obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(reservaProducto, obtenerValorDefecto());
     }
 }

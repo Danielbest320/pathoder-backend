@@ -13,23 +13,23 @@ public final class NotificacionEntity {
     private UUID id;
     private LocalDateTime fecha;
     private TipoNotificacionEntity tipoNotificacion;
-    private Reserva reserva;
+    private ReservaEntity reserva;
 
     public NotificacionEntity(){
         setId(UtilUUID.obtenerValorDefecto());
         setFecha(UtilFechaHora.getInstance().obtenerValorDefecto());
         setTipoNotificacion(TipoNotificacionEntity.obtenerValorDefecto());
-        setReserva(Reserva.obtenerValorDefecto());
+        setReserva(ReservaEntity.obtenerValorDefecto());
     }
 
     public NotificacionEntity(final UUID id){
         setId(id);
         setFecha(UtilFechaHora.getInstance().obtenerValorDefecto());
         setTipoNotificacion(TipoNotificacionEntity.obtenerValorDefecto());
-        setReserva(Reserva.obtenerValorDefecto());
+        setReserva(ReservaEntity.obtenerValorDefecto());
     }
 
-    public NotificacionEntity(final UUID id, final LocalDateTime fecha, final TipoNotificacionEntity tipoNotificacion, final Reserva reserva) {
+    public NotificacionEntity(final UUID id, final LocalDateTime fecha, final TipoNotificacionEntity tipoNotificacion, final ReservaEntity reserva) {
         setId(id);
         setFecha(fecha);
         setTipoNotificacion(tipoNotificacion);
@@ -60,11 +60,11 @@ public final class NotificacionEntity {
         this.tipoNotificacion = tipoNotificacion;
     }
 
-    public Reserva getReserva() {
+    public ReservaEntity getReserva() {
         return reserva;
     }
 
-    public void setReserva(Reserva reserva) {
+    public void setReserva(ReservaEntity reserva) {
         this.reserva = reserva;
     }
 

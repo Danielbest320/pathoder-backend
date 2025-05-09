@@ -94,6 +94,6 @@ public final class DetalleFacturaEntity {
     }
 
     public static DetalleFacturaEntity obtenerValorDefecto(final DetalleFacturaEntity detalleFacturaEntity) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(detalleFacturaEntity, obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(detalleFacturaEntity, obtenerValorDefecto());
     }
 }

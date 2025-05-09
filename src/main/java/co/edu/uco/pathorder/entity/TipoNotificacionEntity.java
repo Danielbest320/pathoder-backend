@@ -72,6 +72,6 @@ public final class TipoNotificacionEntity {
     }
 
     public static TipoNotificacionEntity obtenerValorDefecto(final TipoNotificacionEntity tipoNotificacion) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(tipoNotificacion, obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(tipoNotificacion, obtenerValorDefecto());
     }
 }

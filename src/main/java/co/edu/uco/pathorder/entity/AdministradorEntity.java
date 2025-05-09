@@ -29,7 +29,7 @@ public final class AdministradorEntity extends UsuarioEntity {
     }
 
     public static AdministradorEntity obtenerValorDefecto(final AdministradorEntity administrador) {
-        return UtilObjeto.getIntance().obtenerValorDefecto(administrador,obtenerValorDefecto());
+        return UtilObjeto.getInstance().obtenerValorDefecto(administrador,obtenerValorDefecto());
     }
 
     public String getUsuario() {
