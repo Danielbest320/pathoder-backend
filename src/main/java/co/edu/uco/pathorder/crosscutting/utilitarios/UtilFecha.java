@@ -28,14 +28,9 @@ public final class UtilFecha {
     public LocalDate obtenerValorDefecto(final LocalDate valorOriginal) {
         return obtenerValorDefecto(valorOriginal, obtenerValorDefecto());
     }
-    public boolean esNula(final int valor) {
-        return UtilObjeto.getInstance().esNulo(valor);
-    };
 
     public LocalDate obtenerValorDefecto() {
         return FECHA_DEFECTO;
-    public Date obtenerValorDefecto(final Date valorOriginal, final Date valorDefecto) {
-        return UtilObjeto.getInstance().obtenerValorDefecto(valorOriginal, valorDefecto);
     }
 
     public String obtenerValorDefectoComoTexto() {
