@@ -13,29 +13,29 @@ public class ProductoDTO {
 
     private UUID id;
     private String nombre;
-    private TipoProductoEntity tipoProducto;
+    private TipoProductoDTO tipoProducto;
     private String descripcion;
     private int precio;
-    private CategoriaEntity categoria;
+    private CategoriaDTO categoria;
 
     public ProductoDTO() {
         setId(UtilUUID.obtenerValorDefecto());
         setNombre(UtilTexto.getInstance().obtenerValorDefecto());
-        setTipoProducto(TipoProductoEntity.obtenerValorDefecto());
+        setTipoProducto(TipoProductoDTO.obtenerValorDefecto());
         setDescripcion(UtilTexto.getInstance().obtenerValorDefecto());
         setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
-        setCategoria(CategoriaEntity.obtenerValorDefecto());
+        setCategoria(CategoriaDTO.obtenerValorDefecto());
     }
     public ProductoDTO(final UUID id) {
         setId(id);
         setNombre(UtilTexto.getInstance().obtenerValorDefecto());
-        setTipoProducto(TipoProductoEntity.obtenerValorDefecto());
+        setTipoProducto(TipoProductoDTO.obtenerValorDefecto());
         setDescripcion(UtilTexto.getInstance().obtenerValorDefecto());
         setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
-        setCategoria(CategoriaEntity.obtenerValorDefecto());
+        setCategoria(CategoriaDTO.obtenerValorDefecto());
     }
 
-    public ProductoDTO(final UUID id, final String nombre, final TipoProductoEntity tipoProducto, final String descripcion, final int precio, final CategoriaEntity categoria) {
+    public ProductoDTO(final UUID id, final String nombre, final TipoProductoDTO tipoProducto, final String descripcion, final int precio, final CategoriaDTO categoria) {
         setId(id);
         setNombre(nombre);
         setTipoProducto(tipoProducto);
@@ -51,7 +51,6 @@ public class ProductoDTO {
     public static ProductoDTO obtenerValorDefecto(final ProductoDTO producto) {
         return UtilObjeto.getInstance().obtenerValorDefecto(producto, obtenerValorDefecto());
     }
-
 
 
     public UUID getId() {
@@ -72,12 +71,12 @@ public class ProductoDTO {
         return this;
     }
 
-    public TipoProductoEntity getTipoProducto() {
+    public TipoProductoDTO getTipoProducto() {
         return tipoProducto;
     }
 
-    public ProductoDTO setTipoProducto(final TipoProductoEntity tipoProducto) {
-        this.tipoProducto = TipoProductoEntity.obtenerValorDefecto(tipoProducto);
+    public ProductoDTO setTipoProducto(final TipoProductoDTO tipoProducto) {
+        this.tipoProducto = TipoProductoDTO.obtenerValorDefecto(tipoProducto);
         return this;
     }
 
@@ -99,12 +98,12 @@ public class ProductoDTO {
         return this;
     }
 
-    public CategoriaEntity getCategoria() {
+    public CategoriaDTO getCategoria() {
         return categoria;
     }
 
-    public ProductoDTO setCategoria(final CategoriaEntity categoria) {
-        this.categoria = CategoriaEntity.obtenerValorDefecto(categoria);
+    public ProductoDTO setCategoria(final CategoriaDTO categoria) {
+        this.categoria = CategoriaDTO.obtenerValorDefecto(categoria);
         return this;
     }
 }

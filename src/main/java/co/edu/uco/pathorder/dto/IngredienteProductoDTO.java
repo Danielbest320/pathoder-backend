@@ -9,25 +9,25 @@ import java.util.UUID;
 public class IngredienteProductoDTO {
 
     private UUID id;
-    private ProductoEntity productoVenta;
-    private ProductoEntity productoIngrediente;
+    private ProductoDTO productoVenta;
+    private ProductoDTO productoIngrediente;
     private int cantidad;
 
     public IngredienteProductoDTO() {
         setId(UtilUUID.obtenerValorDefecto());
-        setProductoVenta(ProductoEntity.obtenerValorDefecto());
-        setProductoIngrediente(ProductoEntity.obtenerValorDefecto());
+        setProductoVenta(ProductoDTO.obtenerValorDefecto());
+        setProductoIngrediente(ProductoDTO.obtenerValorDefecto());
         setCantidad(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
     public IngredienteProductoDTO(final UUID id) {
         setId(id);
-        setProductoVenta(ProductoEntity.obtenerValorDefecto());
-        setProductoIngrediente(ProductoEntity.obtenerValorDefecto());
+        setProductoVenta(ProductoDTO.obtenerValorDefecto());
+        setProductoIngrediente(ProductoDTO.obtenerValorDefecto());
         setCantidad(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
-    public IngredienteProductoDTO(final UUID id, final ProductoEntity productoVenta, final ProductoEntity productoIngrediente, final int cantidad) {
+    public IngredienteProductoDTO(final UUID id, final ProductoDTO productoVenta, final ProductoDTO productoIngrediente, final int cantidad) {
         setId(id);
         setProductoVenta(productoVenta);
         setProductoIngrediente(productoIngrediente);
@@ -43,21 +43,21 @@ public class IngredienteProductoDTO {
         return this;
     }
 
-    public ProductoEntity getProductoVenta() {
+    public ProductoDTO getProductoVenta() {
         return productoVenta;
     }
 
-    public IngredienteProductoDTO setProductoVenta(final ProductoEntity productoVenta) {
-        this.productoVenta = ProductoEntity.obtenerValorDefecto(productoVenta);
+    public IngredienteProductoDTO setProductoVenta(final ProductoDTO productoVenta) {
+        this.productoVenta = ProductoDTO.obtenerValorDefecto(productoVenta);
         return this;
     }
 
-    public ProductoEntity getProductoIngrediente() {
+    public ProductoDTO getProductoIngrediente() {
         return productoIngrediente;
     }
 
-    public IngredienteProductoDTO setProductoIngrediente(final ProductoEntity productoIngrediente) {
-        this.productoIngrediente = ProductoEntity.obtenerValorDefecto(productoIngrediente);
+    public IngredienteProductoDTO setProductoIngrediente(final ProductoDTO productoIngrediente) {
+        this.productoIngrediente = ProductoDTO.obtenerValorDefecto(productoIngrediente);
         return this;
     }
 

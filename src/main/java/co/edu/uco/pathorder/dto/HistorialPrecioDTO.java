@@ -11,7 +11,7 @@ import java.util.UUID;
 public class HistorialPrecioDTO {
 
     private UUID id;
-    private ProductoEntity producto;
+    private ProductoDTO producto;
     private int precio;
     private Date fechaDesde;
     private Date fechaHasta;
@@ -19,7 +19,7 @@ public class HistorialPrecioDTO {
 
     public HistorialPrecioDTO() {
         setId(UtilUUID.obtenerValorDefecto());
-        setProducto(ProductoEntity.obtenerValorDefecto());
+        setProducto(ProductoDTO.ObtenerValorDefecto());
         setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
         setFechaDesde(UtilFecha.getInstance().obtenerValorDefectoComoDate());
         setFechaHasta(UtilFecha.getInstance().obtenerValorDefectoComoDate());
@@ -27,13 +27,13 @@ public class HistorialPrecioDTO {
 
     public HistorialPrecioDTO(final UUID id) {
         setId(id);
-        setProducto(ProductoEntity.obtenerValorDefecto());
+        setProducto(ProductoDTO.obtenerValorDefecto());
         setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
         setFechaDesde(UtilFecha.getInstance().obtenerValorDefectoComoDate());
         setFechaHasta(UtilFecha.getInstance().obtenerValorDefectoComoDate());
     }
 
-    public HistorialPrecioDTO(final UUID id, final ProductoEntity producto, final int precio, final Date fechaDesde, final Date fechaHasta) {
+    public HistorialPrecioDTO(final UUID id, final ProductoDTO producto, final int precio, final Date fechaDesde, final Date fechaHasta) {
         setId(id);
         setProducto(producto);
         setPrecio(precio);
@@ -51,12 +51,12 @@ public class HistorialPrecioDTO {
         return this;
     }
 
-    public ProductoEntity getProducto() {
+    public ProductoDTO getProducto() {
         return producto;
     }
 
-    public HistorialPrecioDTO setProducto(final ProductoEntity producto) {
-        this.producto = ProductoEntity.obtenerValorDefecto(producto);
+    public HistorialPrecioDTO setProducto(final ProductoDTO producto) {
+        this.producto = ProductoDTO.obtenerValorDefecto(producto);
         return this;
     }
 

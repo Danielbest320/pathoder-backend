@@ -9,23 +9,23 @@ import java.util.UUID;
 public class InventarioDTO {
 
     private UUID id;
-    private ProductoEntity producto;
+    private ProductoDTO producto;
     private int disponibilidad;
 
 
     public InventarioDTO() {
         setId(UtilUUID.obtenerValorDefecto());
-        setProducto(ProductoEntity.obtenerValorDefecto());
+        setProducto(ProductoDTO.obtenerValorDefecto());
         setDisponibilidad(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
     public InventarioDTO(final UUID id) {
         setId(id);
-        setProducto(ProductoEntity.obtenerValorDefecto());
+        setProducto(ProductoDTO.obtenerValorDefecto());
         setDisponibilidad(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
-    public InventarioDTO(final UUID id, final ProductoEntity producto, final int disponibilidad) {
+    public InventarioDTO(final UUID id, final ProductoDTO producto, final int disponibilidad) {
         setId(id);
         setProducto(producto);
         setDisponibilidad(disponibilidad);
@@ -40,12 +40,12 @@ public class InventarioDTO {
         return this;
     }
 
-    public ProductoEntity getProducto() {
+    public ProductoDTO getProducto() {
         return producto;
     }
 
-    public InventarioDTO setProducto(final ProductoEntity producto) {
-        this.producto = ProductoEntity.obtenerValorDefecto(producto);
+    public InventarioDTO setProducto(final ProductoDTO producto) {
+        this.producto = ProductoDTO.obtenerValorDefecto(producto);
         return this;
     }
 
