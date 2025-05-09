@@ -1,8 +1,10 @@
 package co.edu.uco.pathorder.crosscutting.utilitarios;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 
 public final class UtilFecha {
 
@@ -60,5 +62,12 @@ public final class UtilFecha {
 
     public String obtenerFechaActualComoTexto() {
         return obtenerFechaActual().format(FORMATEADOR);
+    }
+
+    public Date obtenerValorDefectoComoDate() {
+        return Date.from(obtenerValorDefecto().atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
+    public Date obtenerValorDefectoComoDate(final Date valorOriginal) {
+        return (valorOriginal == null) ? obtenerValorDefectoComoDate() : valorOriginal;
     }
 }
