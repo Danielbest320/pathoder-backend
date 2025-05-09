@@ -5,30 +5,30 @@ import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 
 import java.util.UUID;
 
-public final class AdministradorEntity extends UsuarioEntity {
+public final class AdministradorDTO extends UsuarioEntity {
 
     private String usuario;
 
-    public AdministradorEntity() {
+    public AdministradorDTO() {
         super();
         setUsuario(UtilTexto.getInstance().obtenerValorDefecto());
     }
 
-    public AdministradorEntity(final UUID id) {
+    public AdministradorDTO(final UUID id) {
         super(id);
         setUsuario(UtilTexto.getInstance().obtenerValorDefecto());
     }
 
-    public AdministradorEntity(final UUID id,final  String di,final String nombre,final String apellido,final String correo,final String telefono,final String contrasena,final boolean confirmacionCorreo,final boolean confirmacionTelefono,final boolean estadoCuenta, String usuario) {
+    public AdministradorDTO(final UUID id, final  String di, final String nombre, final String apellido, final String correo, final String telefono, final String contrasena, final boolean confirmacionCorreo, final boolean confirmacionTelefono, final boolean estadoCuenta, String usuario) {
         super(id, di, nombre, apellido, correo, telefono, contrasena, confirmacionCorreo, confirmacionTelefono, estadoCuenta);
         setUsuario(usuario);
     }
 
-    public static AdministradorEntity obtenerValorDefecto() {
-        return new AdministradorEntity();
+    public static AdministradorDTO obtenerValorDefecto() {
+        return new AdministradorDTO();
     }
 
-    public static AdministradorEntity obtenerValorDefecto(final AdministradorEntity administrador) {
+    public static AdministradorDTO obtenerValorDefecto(final AdministradorDTO administrador) {
         return UtilObjeto.getInstance().obtenerValorDefecto(administrador,obtenerValorDefecto());
     }
 
