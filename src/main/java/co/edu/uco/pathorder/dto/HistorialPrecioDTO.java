@@ -19,7 +19,7 @@ public class HistorialPrecioDTO {
 
     public HistorialPrecioDTO() {
         setId(UtilUUID.obtenerValorDefecto());
-        setProducto(ProductoDTO.ObtenerValorDefecto());
+        setProducto(ProductoDTO.obtenerValorDefecto());
         setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
         setFechaDesde(UtilFecha.getInstance().obtenerValorDefectoComoDate());
         setFechaHasta(UtilFecha.getInstance().obtenerValorDefectoComoDate());
