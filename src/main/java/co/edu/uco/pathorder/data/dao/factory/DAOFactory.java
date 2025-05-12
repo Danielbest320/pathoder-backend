@@ -32,6 +32,27 @@ public abstract class  DAOFactory{
     public abstract void cerrarConexion();
 
 
+
+
+    // --------------<<<<<<<<<<<<<<<<<<  Descomentar y completar cuando se implemente el DAO correspondiente ------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    // public abstract AdministradorDao getAdministradorDAO();
+    // public abstract CategoriaDao getCategoriaDAO();
+    // public abstract ClienteDao getClienteDAO();
+    // public abstract DetalleFacturaDao getDetalleFacturaDAO();
+    // public abstract EstadoDao getEstadoDAO();
+    // public abstract FacturaDao getFacturaDAO();
+    // public abstract HistorialPrecioDao getHistorialPrecioDAO();
+    // public abstract HorarioLocalDao getHorarioLocalDAO();
+    // public abstract IngredienteProductoDao getIngredienteProductoDAO();
+    // public abstract InventarioDao getInventarioDAO();
+    // public abstract NotificacionDao getNotificacionDAO();
+    // public abstract ProductoDao getProductoDAO();
+    // public abstract ReservaDao getReservaDAO();
+    // public abstract ReservaProductoDao getReservaProductoDAO();
+    // public abstract TipoNotificacionDao getTipoNotificacionDAO();
+    // public abstract TipoProductoDao getTipoProductoDAO();
+
     public abstract UsuarioDao getUsuarioDAO();
 
 
