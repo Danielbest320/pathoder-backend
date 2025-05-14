@@ -1,4 +1,4 @@
-package co.edu.uco.pathorder.data.dao.entity.usuario.impl.azuresql;
+package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.data.dao.entity.usuario.impl.postgresql;
 
 import co.edu.uco.pathorder.data.dao.entity.usuario.UsuarioDao;
 import co.edu.uco.pathorder.entity.UsuarioEntity;

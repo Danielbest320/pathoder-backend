@@ -1,8 +1,8 @@
 package co.edu.uco.pathorder.dto;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilNumerico;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
-import co.edu.uco.pathorder.entity.ProductoEntity;
 
 import java.util.UUID;
 
@@ -29,6 +29,14 @@ public class InventarioDTO {
         setId(id);
         setProducto(producto);
         setDisponibilidad(disponibilidad);
+    }
+
+    public static InventarioDTO obtenerValorDefecto() {
+        return new InventarioDTO();
+    }
+
+    public static InventarioDTO obtenerValorDefecto(final InventarioDTO inventario) {
+        return UtilObjeto.getInstance().obtenerValorDefecto(inventario, obtenerValorDefecto());
     }
 
     public UUID getId() {

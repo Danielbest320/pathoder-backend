@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.entity;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilNumerico;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
 import java.util.UUID;
@@ -28,6 +29,14 @@ public class InventarioEntity {
         setId(id);
         setProducto(producto);
         setDisponibilidad(disponibilidad);
+    }
+
+    public static InventarioEntity obtenerValorDefecto() {
+        return new InventarioEntity();
+    }
+
+    public static InventarioEntity obtenerValorDefecto(final InventarioEntity inventario) {
+        return UtilObjeto.getInstance().obtenerValorDefecto(inventario, obtenerValorDefecto());
     }
 
     public UUID getId() {

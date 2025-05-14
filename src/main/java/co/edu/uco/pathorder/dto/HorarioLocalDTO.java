@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.dto;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFechaHora;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
 import java.time.LocalDateTime;
@@ -33,6 +34,14 @@ public class HorarioLocalDTO {
         setEstadoLocal(estadoLocal);
         setHoraDesde(horaDesde);
         setHoraHasta(horaHasta);
+    }
+
+    public static HorarioLocalDTO obtenerValorDefecto() {
+        return new HorarioLocalDTO();
+    }
+
+    public static HorarioLocalDTO obtenerValorDefecto(final HorarioLocalDTO horarioLocal) {
+        return UtilObjeto.getInstance().obtenerValorDefecto(horarioLocal, obtenerValorDefecto());
     }
 
     public UUID getId() {

@@ -1,9 +1,9 @@
 package co.edu.uco.pathorder.dto;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFecha;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilPrecio;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
-import co.edu.uco.pathorder.entity.ProductoEntity;
 
 import java.util.Date;
 import java.util.UUID;
@@ -39,6 +39,14 @@ public class HistorialPrecioDTO {
         setPrecio(precio);
         setFechaDesde(fechaDesde);
         setFechaHasta(fechaHasta);
+    }
+
+    public static HistorialPrecioDTO obtenerValorDefecto() {
+        return new HistorialPrecioDTO();
+    }
+
+    public static HistorialPrecioDTO obtenerValorDefecto (final HistorialPrecioDTO historialPrecio) {
+        return UtilObjeto.getInstance().obtenerValorDefecto(historialPrecio, obtenerValorDefecto());
     }
 
 
