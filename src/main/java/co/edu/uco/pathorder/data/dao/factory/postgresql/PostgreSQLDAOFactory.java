@@ -2,12 +2,14 @@ package co.edu.uco.pathorder.data.dao.factory.postgresql;
 
 import co.edu.uco.pathorder.data.dao.entity.administrador.AdministradorDao;
 import co.edu.uco.pathorder.data.dao.entity.administrador.impl.postgresql.AdministradorPostgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.categoria.impl.postgresql.CategoriaPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.cliente.ClienteDao;
 import co.edu.uco.pathorder.data.dao.entity.cliente.impl.postgresql.ClientePostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.estado.EstadoDao;
 import co.edu.uco.pathorder.data.dao.entity.categoria.CategoriaDao;
 import co.edu.uco.pathorder.data.dao.entity.estado.impl.postgreSQLDAO.EstadoPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.historialPrecio.HistorialPrecioDao;
+import co.edu.uco.pathorder.data.dao.entity.historialPrecio.impl.postgresql.HistorialPrecioPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.horarioLocal.HorarioLocalDao;
 import co.edu.uco.pathorder.data.dao.entity.horarioLocal.impl.postgresql.HorarioLocalPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.ingredienteProducto.IngredienteProductoDao;
@@ -16,6 +18,8 @@ import co.edu.uco.pathorder.data.dao.entity.inventario.InventarioDao;
 import co.edu.uco.pathorder.data.dao.entity.inventario.impl.postgresql.InventarioPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.producto.ProductoDao;
 import co.edu.uco.pathorder.data.dao.entity.producto.impl.postgresql.ProductoPostgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.reserva.ReservaDao;
+import co.edu.uco.pathorder.data.dao.entity.reserva.impl.postgresql.ReservaPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.tipoProducto.TipoProductoDao;
 import co.edu.uco.pathorder.data.dao.entity.tipoProducto.impl.postgresql.TipoProductoPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.usuario.UsuarioDao;
@@ -71,18 +75,23 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     }
 
     @Override
+    public ReservaDao getReservaDAO() {
+        return new ReservaPostgreSQLDAO(conexion);
+    }
+
+    @Override
     public AdministradorDao getAdministradorDAO() {
         return new AdministradorPostgreSQLDAO(conexion);
     }
 
     @Override
     public CategoriaDao getCategoriaDAO() {
-        return null;
+        return new CategoriaPostgreSQLDAO(conexion);
     }
 
     @Override
     public HistorialPrecioDao getHistorialPrecioDAO() {
-        return null;
+        return new HistorialPrecioPostgreSQLDAO(conexion);
     }
 
     @Override

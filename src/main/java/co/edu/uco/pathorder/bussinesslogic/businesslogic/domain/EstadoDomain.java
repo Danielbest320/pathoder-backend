@@ -6,7 +6,7 @@ import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
-public final class EstadoDomain {
+public  class EstadoDomain {
 
     private UUID id;
     private String nombre;

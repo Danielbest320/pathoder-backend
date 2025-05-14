@@ -6,7 +6,7 @@ import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
 import java.util.UUID;
 
-public final class ClienteDomain extends UsuarioDomain {
+public  class ClienteDomain extends UsuarioDomain {
 
     ClienteDomain() {
         super();

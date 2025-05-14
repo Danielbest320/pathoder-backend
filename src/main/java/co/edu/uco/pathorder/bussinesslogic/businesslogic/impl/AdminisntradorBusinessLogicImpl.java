@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLogic {
 
-    private DAOFactory factory;
+    private final DAOFactory factory;
     public AdminisntradorBusinessLogicImpl(DAOFactory factory) {
         this.factory = factory;
 

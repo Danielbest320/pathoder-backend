@@ -10,6 +10,7 @@ import co.edu.uco.pathorder.data.dao.entity.horarioLocal.HorarioLocalDao;
 import co.edu.uco.pathorder.data.dao.entity.ingredienteProducto.IngredienteProductoDao;
 import co.edu.uco.pathorder.data.dao.entity.inventario.InventarioDao;
 import co.edu.uco.pathorder.data.dao.entity.producto.ProductoDao;
+import co.edu.uco.pathorder.data.dao.entity.reserva.ReservaDao;
 import co.edu.uco.pathorder.data.dao.entity.tipoProducto.TipoProductoDao;
 import co.edu.uco.pathorder.data.dao.entity.usuario.UsuarioDao;
 import co.edu.uco.pathorder.data.dao.factory.postgresql.PostgreSQLDAOFactory;
@@ -66,6 +67,8 @@ public abstract class  DAOFactory{
     public abstract TipoProductoDao getTipoProductoDAO();
 
     public abstract ProductoDao getProductoDAO();
+
+    public abstract ReservaDao getReservaDAO();
 
 
 
