@@ -7,25 +7,25 @@ import java.util.UUID;
 public final class FacturaEntity {
 
     private UUID id;
-    private AdministradorDTO administrador;
+    private AdministradorEntity administrador;
     private LocalDateTime fechaHora;
     private int total;
 
     public FacturaEntity() {
         setId(UtilUUID.obtenerValorDefecto());
-        setAdministrador(AdministradorDTO.obtenerValorDefecto());
+        setAdministrador(AdministradorEntity.obtenerValorDefecto());
         setFechaHora(UtilFechaHora.getInstance().obtenerValorDefecto());
         setTotal(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
     public FacturaEntity(final UUID id) {
         setId(id);
-        setAdministrador(AdministradorDTO.obtenerValorDefecto());
+        setAdministrador(AdministradorEntity.obtenerValorDefecto());
         setFechaHora(UtilFechaHora.getInstance().obtenerValorDefecto());
         setTotal(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
-    public FacturaEntity(final UUID id, final AdministradorDTO administrador, final LocalDateTime fechaHora, final int total) {
+    public FacturaEntity(final UUID id, final AdministradorEntity administrador, final LocalDateTime fechaHora, final int total) {
         setId(id);
         setAdministrador(administrador);
         setFechaHora(fechaHora);
@@ -40,12 +40,12 @@ public final class FacturaEntity {
         this.id = UtilUUID.obtenerValorDefecto(id);
     }
 
-    public AdministradorDTO getAdministrador() {
+    public AdministradorEntity getAdministrador() {
         return administrador;
     }
 
-    public void setAdministrador(AdministradorDTO administrador) {
-        this.administrador = AdministradorDTO.obtenerValorDefecto(administrador);
+    public void setAdministrador(AdministradorEntity administrador) {
+        this.administrador = AdministradorEntity.obtenerValorDefecto(administrador);
     }
 
     public LocalDateTime getFechaHora() {

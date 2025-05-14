@@ -1,7 +1,9 @@
 package co.edu.uco.pathorder.data.dao.factory;
 
+import co.edu.uco.pathorder.data.dao.entity.administrador.AdministradorDao;
+import co.edu.uco.pathorder.data.dao.entity.cliente.ClienteDao;
+import co.edu.uco.pathorder.data.dao.entity.estado.EstadoDao;
 import co.edu.uco.pathorder.data.dao.entity.usuario.UsuarioDao;
-import co.edu.uco.pathorder.data.dao.entity.usuario.impl.azuresql.UsuarioPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.factory.postgresql.PostgreSQLDAOFactory;
 
 public abstract class  DAOFactory{
@@ -36,11 +38,11 @@ public abstract class  DAOFactory{
 
     // --------------<<<<<<<<<<<<<<<<<<  Descomentar y completar cuando se implemente el DAO correspondiente ------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    // public abstract AdministradorDao getAdministradorDAO();
+     public abstract AdministradorDao getAdministradorDAO();
     // public abstract CategoriaDao getCategoriaDAO();
-    // public abstract ClienteDao getClienteDAO();
+    public abstract ClienteDao getClienteDAO();
     // public abstract DetalleFacturaDao getDetalleFacturaDAO();
-    // public abstract EstadoDao getEstadoDAO();
+    public abstract EstadoDao getEstadoDAO();
     // public abstract FacturaDao getFacturaDAO();
     // public abstract HistorialPrecioDao getHistorialPrecioDAO();
     // public abstract HorarioLocalDao getHorarioLocalDAO();

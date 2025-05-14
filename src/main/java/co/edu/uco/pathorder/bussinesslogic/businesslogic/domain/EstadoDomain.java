@@ -1,4 +1,4 @@
-package co.edu.uco.pathorder.entity;
+package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 
 import java.util.UUID;
 
@@ -6,39 +6,39 @@ import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
-public final class EstadoEntity {
+public final class EstadoDomain {
 
     private UUID id;
     private String nombre;
 
-    public EstadoEntity() {
+    EstadoDomain() {
         setId(UtilUUID.obtenerValorDefecto());
         setNombre(UtilTexto.getInstance().obtenerValorDefecto());
     }
-    public EstadoEntity(final UUID id) {
+    public EstadoDomain(final UUID id) {
         setId(id);
         setNombre(UtilTexto.getInstance().obtenerValorDefecto());
 
     }
 
-    public EstadoEntity(final UUID id, final String nombre) {
+    public EstadoDomain(final UUID id, final String nombre) {
         setId(id);
         setNombre(nombre);
     }
 
-    public static EstadoEntity obtenerValorDefecto() {
-        return new EstadoEntity();
+    static EstadoDomain obtenerValorDefecto() {
+        return new EstadoDomain();
     }
 
-    public static EstadoEntity obtenerValorDefecto(final EstadoEntity entity) {
-        return UtilObjeto.getInstance().obtenerValorDefecto(entity, obtenerValorDefecto());
+    static EstadoDomain obtenerValorDefecto(final EstadoDomain domain) {
+        return UtilObjeto.getInstance().obtenerValorDefecto(domain, obtenerValorDefecto());
     }
 
     public UUID getId() {
         return id;
     }
 
-    public void setId(final UUID id) {
+    private void setId(final UUID id) {
         this.id = UtilUUID.obtenerValorDefecto(id);
     }
 
@@ -46,7 +46,8 @@ public final class EstadoEntity {
         return nombre;
     }
 
-    public void setNombre(final String nombre) {
+    private void setNombre(final String nombre) {
         this.nombre = UtilTexto.getInstance().quitarEspacioBlancoInicioFin(nombre);
     }
 }
+
