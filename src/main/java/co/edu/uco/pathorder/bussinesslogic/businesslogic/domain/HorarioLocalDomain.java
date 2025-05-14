@@ -49,7 +49,7 @@ public class HorarioLocalDomain {
     }
 
     private void setId(final UUID id) {
-        this.id = UtilUUID.obtenerValorDefecto();
+        this.id = UtilUUID.obtenerValorDefecto(id);
     }
 
     public Boolean getEstadoLocal() {
