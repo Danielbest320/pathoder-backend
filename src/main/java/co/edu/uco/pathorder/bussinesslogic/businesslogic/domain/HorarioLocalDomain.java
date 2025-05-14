@@ -1,4 +1,4 @@
-package co.edu.uco.pathorder.dto;
+package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFechaHora;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
@@ -7,7 +7,7 @@ import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class HorarioLocalDTO {
+public class HorarioLocalDomain {
 
     private UUID id;
     private Boolean estadoLocal;
@@ -15,32 +15,32 @@ public class HorarioLocalDTO {
     private LocalDateTime horaHasta;
 
 
-    public HorarioLocalDTO() {
+    HorarioLocalDomain() {
         setId(UtilUUID.obtenerValorDefecto());
         setEstadoLocal(false);
         setHoraDesde(UtilFechaHora.getInstance().obtenerValorDefecto());
         setHoraHasta(UtilFechaHora.getInstance().obtenerValorDefecto());
     }
 
-    public HorarioLocalDTO(final UUID id) {
+    public HorarioLocalDomain(final UUID id) {
         setId(id);
         setEstadoLocal(false);
         setHoraDesde(UtilFechaHora.getInstance().obtenerValorDefecto());
         setHoraHasta(UtilFechaHora.getInstance().obtenerValorDefecto());
     }
 
-    public HorarioLocalDTO(final UUID id, final Boolean estadoLocal, final LocalDateTime horaDesde, final LocalDateTime horaHasta) {
+    public HorarioLocalDomain(final UUID id, final Boolean estadoLocal, final LocalDateTime horaDesde, final LocalDateTime horaHasta) {
         setId(id);
         setEstadoLocal(estadoLocal);
         setHoraDesde(horaDesde);
         setHoraHasta(horaHasta);
     }
 
-    public static HorarioLocalDTO obtenerValorDefecto() {
-        return new HorarioLocalDTO();
+    static HorarioLocalDomain obtenerValorDefecto() {
+        return new HorarioLocalDomain();
     }
 
-    public static HorarioLocalDTO obtenerValorDefecto(final HorarioLocalDTO horarioLocal) {
+    static HorarioLocalDomain obtenerValorDefecto(final HorarioLocalDomain horarioLocal) {
         return UtilObjeto.getInstance().obtenerValorDefecto(horarioLocal, obtenerValorDefecto());
     }
 
@@ -48,35 +48,31 @@ public class HorarioLocalDTO {
         return id;
     }
 
-    public HorarioLocalDTO setId(final UUID id) {
-        this.id = UtilUUID.obtenerValorDefecto();
-        return this;
+    private void setId(final UUID id) {
+        this.id = UtilUUID.obtenerValorDefecto(id);
     }
 
     public Boolean getEstadoLocal() {
         return estadoLocal;
     }
 
-    public HorarioLocalDTO setEstadoLocal(final Boolean estadoLocal) {
+    private void setEstadoLocal(final Boolean estadoLocal) {
         this.estadoLocal = estadoLocal;
-        return this;
     }
 
     public LocalDateTime getHoraDesde() {
         return horaDesde;
     }
 
-    public HorarioLocalDTO setHoraDesde(final LocalDateTime horaDesde) {
+    private void setHoraDesde(final LocalDateTime horaDesde) {
         this.horaDesde = UtilFechaHora.getInstance().obtenerValorDefecto(horaDesde);
-        return this;
     }
 
     public LocalDateTime getHoraHasta() {
         return horaHasta;
     }
 
-    public HorarioLocalDTO setHoraHasta(final LocalDateTime horaHasta) {
+    private void setHoraHasta(final LocalDateTime horaHasta) {
         this.horaHasta = UtilFechaHora.getInstance().obtenerValorDefecto(horaHasta);
-        return this;
     }
 }

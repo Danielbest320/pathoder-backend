@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.entity;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFecha;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilPrecio;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
@@ -38,6 +39,14 @@ public class HistorialPrecioEntity {
         setPrecio(precio);
         setFechaDesde(fechaDesde);
         setFechaHasta(fechaHasta);
+    }
+
+    public static HistorialPrecioEntity obtenerValorDefecto() {
+        return new HistorialPrecioEntity();
+    }
+
+    public static HistorialPrecioEntity obtenerValorDefecto (final HistorialPrecioEntity historialPrecio) {
+        return UtilObjeto.getInstance().obtenerValorDefecto(historialPrecio, obtenerValorDefecto());
     }
 
 

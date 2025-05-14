@@ -1,4 +1,4 @@
-package co.edu.uco.pathorder.entity;
+package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilNumerico;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
@@ -6,36 +6,36 @@ import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
 import java.util.UUID;
 
-public class InventarioEntity {
+public class InventarioDomain {
 
     private UUID id;
-    private ProductoEntity producto;
+    private ProductoDomain producto;
     private int disponibilidad;
 
 
-    public InventarioEntity() {
+    InventarioDomain() {
         setId(UtilUUID.obtenerValorDefecto());
-        setProducto(ProductoEntity.obtenerValorDefecto());
+        setProducto(ProductoDomain.obtenerValorDefecto());
         setDisponibilidad(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
-    public InventarioEntity(final UUID id) {
+    public InventarioDomain(final UUID id) {
         setId(id);
-        setProducto(ProductoEntity.obtenerValorDefecto());
+        setProducto(ProductoDomain.obtenerValorDefecto());
         setDisponibilidad(UtilNumerico.getInstance().obtenerValorDefecto());
     }
 
-    public InventarioEntity(final UUID id, final ProductoEntity producto, final int disponibilidad) {
+    public InventarioDomain(final UUID id, final ProductoDomain producto, final int disponibilidad) {
         setId(id);
         setProducto(producto);
         setDisponibilidad(disponibilidad);
     }
 
-    public static InventarioEntity obtenerValorDefecto() {
-        return new InventarioEntity();
+    static InventarioDomain obtenerValorDefecto() {
+        return new InventarioDomain();
     }
 
-    public static InventarioEntity obtenerValorDefecto(final InventarioEntity inventario) {
+    static InventarioDomain obtenerValorDefecto(final InventarioDomain inventario) {
         return UtilObjeto.getInstance().obtenerValorDefecto(inventario, obtenerValorDefecto());
     }
 
@@ -43,23 +43,23 @@ public class InventarioEntity {
         return id;
     }
 
-    public void setId(final UUID id) {
+    private void setId(final UUID id) {
         this.id = UtilUUID.obtenerValorDefecto(id);
     }
 
-    public ProductoEntity getProducto() {
+    public ProductoDomain getProducto() {
         return producto;
     }
 
-    public void setProducto(final ProductoEntity producto) {
-        this.producto = ProductoEntity.obtenerValorDefecto(producto);
+    private void setProducto(final ProductoDomain producto) {
+        this.producto = ProductoDomain.obtenerValorDefecto(producto);
     }
 
     public int getDisponibilidad() {
         return disponibilidad;
     }
 
-    public void setDisponibilidad(final int disponibilidad) {
+    private void setDisponibilidad(final int disponibilidad) {
         this.disponibilidad = UtilNumerico.getInstance().obtenerValorDefecto( disponibilidad);
     }
 }

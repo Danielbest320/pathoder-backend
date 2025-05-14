@@ -1,4 +1,4 @@
-package co.edu.uco.pathorder.dto;
+package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFecha;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
@@ -8,32 +8,32 @@ import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 import java.util.Date;
 import java.util.UUID;
 
-public class HistorialPrecioDTO {
+public class HistorialPrecioDomain {
 
     private UUID id;
-    private ProductoDTO producto;
+    private ProductoDomain producto;
     private int precio;
     private Date fechaDesde;
     private Date fechaHasta;
 
 
-    public HistorialPrecioDTO() {
+    HistorialPrecioDomain() {
         setId(UtilUUID.obtenerValorDefecto());
-        setProducto(ProductoDTO.obtenerValorDefecto());
+        setProducto(ProductoDomain.obtenerValorDefecto());
         setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
         setFechaDesde(UtilFecha.getInstance().obtenerValorDefectoComoDate());
         setFechaHasta(UtilFecha.getInstance().obtenerValorDefectoComoDate());
     }
 
-    public HistorialPrecioDTO(final UUID id) {
+    public HistorialPrecioDomain(final UUID id) {
         setId(id);
-        setProducto(ProductoDTO.obtenerValorDefecto());
+        setProducto(ProductoDomain.obtenerValorDefecto());
         setPrecio(UtilPrecio.getInstance().obtenerValorDefecto());
         setFechaDesde(UtilFecha.getInstance().obtenerValorDefectoComoDate());
         setFechaHasta(UtilFecha.getInstance().obtenerValorDefectoComoDate());
     }
 
-    public HistorialPrecioDTO(final UUID id, final ProductoDTO producto, final int precio, final Date fechaDesde, final Date fechaHasta) {
+    public HistorialPrecioDomain(final UUID id, final ProductoDomain producto, final int precio, final Date fechaDesde, final Date fechaHasta) {
         setId(id);
         setProducto(producto);
         setPrecio(precio);
@@ -41,11 +41,11 @@ public class HistorialPrecioDTO {
         setFechaHasta(fechaHasta);
     }
 
-    public static HistorialPrecioDTO obtenerValorDefecto() {
-        return new HistorialPrecioDTO();
+    static HistorialPrecioDomain obtenerValorDefecto() {
+        return new HistorialPrecioDomain();
     }
 
-    public static HistorialPrecioDTO obtenerValorDefecto (final HistorialPrecioDTO historialPrecio) {
+    static HistorialPrecioDomain obtenerValorDefecto (final HistorialPrecioDomain historialPrecio) {
         return UtilObjeto.getInstance().obtenerValorDefecto(historialPrecio, obtenerValorDefecto());
     }
 
@@ -54,44 +54,39 @@ public class HistorialPrecioDTO {
         return id;
     }
 
-    public HistorialPrecioDTO setId(final UUID id) {
+    private void setId(final UUID id) {
         this.id = UtilUUID.obtenerValorDefecto(id);
-        return this;
     }
 
-    public ProductoDTO getProducto() {
+    public ProductoDomain getProducto() {
         return producto;
     }
 
-    public HistorialPrecioDTO setProducto(final ProductoDTO producto) {
-        this.producto = ProductoDTO.obtenerValorDefecto(producto);
-        return this;
+    private void setProducto(final ProductoDomain producto) {
+        this.producto = ProductoDomain.obtenerValorDefecto(producto);
     }
 
     public int getPrecio() {
         return precio;
     }
 
-    public HistorialPrecioDTO setPrecio(final int precio) {
+    private void setPrecio(final int precio) {
         this.precio = UtilPrecio.getInstance().obtenerValorDefecto(precio);
-        return this;
     }
 
     public Date getFechaDesde() {
         return fechaDesde;
     }
 
-    public HistorialPrecioDTO setFechaDesde(final Date fechaDesde) {
+    private void setFechaDesde(final Date fechaDesde) {
         this.fechaDesde = UtilFecha.getInstance().obtenerValorDefectoComoDate(fechaDesde);
-        return this;
     }
 
     public Date getFechaHasta() {
         return fechaHasta;
     }
 
-    public HistorialPrecioDTO setFechaHasta(final Date fechaHasta) {
+    private void setFechaHasta(final Date fechaHasta) {
         this.fechaHasta = UtilFecha.getInstance().obtenerValorDefectoComoDate(fechaHasta);
-        return this;
     }
 }

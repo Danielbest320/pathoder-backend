@@ -1,13 +1,15 @@
 package co.edu.uco.pathorder.data.dao.entity.administrador.impl.postgresql;
 
+import co.edu.uco.pathorder.data.dao.entity.administrador.AdministradorDao;
 import co.edu.uco.pathorder.data.dao.entity.cliente.ClienteDao;
+import co.edu.uco.pathorder.entity.AdministradorEntity;
 import co.edu.uco.pathorder.entity.ClienteEntity;
 
 import java.sql.Connection;
 import java.util.List;
 import java.util.UUID;
 
-public class AdministradorPostgreSQLDAO implements ClienteDao {
+public class AdministradorPostgreSQLDAO implements AdministradorDao {
 
     private Connection conexion;
 
@@ -16,9 +18,8 @@ public class AdministradorPostgreSQLDAO implements ClienteDao {
     }
 
 
-
     @Override
-    public void create(ClienteEntity entity) {
+    public void create(AdministradorEntity entity) {
 
     }
 
@@ -28,22 +29,22 @@ public class AdministradorPostgreSQLDAO implements ClienteDao {
     }
 
     @Override
-    public List<ClienteEntity> listByFilter(ClienteEntity entity) {
-        return List.of();
-    }
-
-    @Override
-    public List<ClienteEntity> listAll() {
-        return List.of();
-    }
-
-    @Override
-    public ClienteEntity listById(UUID uuid) {
+    public List<AdministradorEntity> listByFilter(AdministradorEntity entity) {
         return null;
     }
 
     @Override
-    public void update(UUID uuid, ClienteEntity entity) {
+    public List<AdministradorEntity> listAll() {
+        return null;
+    }
+
+    @Override
+    public AdministradorEntity listById(UUID uuid) {
+        return null;
+    }
+
+    @Override
+    public void update(UUID uuid, AdministradorEntity entity) {
 
     }
 }
