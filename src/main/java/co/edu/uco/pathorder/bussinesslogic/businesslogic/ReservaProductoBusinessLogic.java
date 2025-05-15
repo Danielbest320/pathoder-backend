@@ -1,6 +1,8 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic;
 
+import java.util.List;
 import java.util.UUID;
+import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.*;
 
 public interface ReservaProductoBusinessLogic {
 

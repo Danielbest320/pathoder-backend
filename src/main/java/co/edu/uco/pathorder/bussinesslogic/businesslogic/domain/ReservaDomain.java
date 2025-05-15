@@ -6,7 +6,7 @@ import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 
 import java.util.UUID;
 
-public final class ReservaDomain {
+public class ReservaDomain {
 
     private UUID id;
     private ClienteDomain cliente;

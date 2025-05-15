@@ -1,5 +1,7 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic;
 
+import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.DetalleFacturaDomain;
+
 import java.util.List;
 import java.util.UUID;
 
