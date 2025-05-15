@@ -5,9 +5,11 @@ import co.edu.uco.pathorder.data.dao.entity.administrador.impl.postgresql.Admini
 import co.edu.uco.pathorder.data.dao.entity.categoria.impl.postgresql.CategoriaPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.cliente.ClienteDao;
 import co.edu.uco.pathorder.data.dao.entity.cliente.impl.postgresql.ClientePostgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.detallefactura.DetalleFacturaDao;
 import co.edu.uco.pathorder.data.dao.entity.estado.EstadoDao;
 import co.edu.uco.pathorder.data.dao.entity.categoria.CategoriaDao;
 import co.edu.uco.pathorder.data.dao.entity.estado.impl.postgreSQLDAO.EstadoPostgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.factura.FacturaDao;
 import co.edu.uco.pathorder.data.dao.entity.historialPrecio.HistorialPrecioDao;
 import co.edu.uco.pathorder.data.dao.entity.historialPrecio.impl.postgresql.HistorialPrecioPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.horarioLocal.HorarioLocalDao;
@@ -16,12 +18,15 @@ import co.edu.uco.pathorder.data.dao.entity.ingredienteProducto.IngredienteProdu
 import co.edu.uco.pathorder.data.dao.entity.ingredienteProducto.impl.postgresql.IngredienteProductoPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.inventario.InventarioDao;
 import co.edu.uco.pathorder.data.dao.entity.inventario.impl.postgresql.InventarioPostgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.notificacion.NotificacionDao;
 import co.edu.uco.pathorder.data.dao.entity.producto.ProductoDao;
 import co.edu.uco.pathorder.data.dao.entity.producto.impl.postgresql.ProductoPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.reserva.ReservaDao;
 import co.edu.uco.pathorder.data.dao.entity.reserva.impl.postgresql.ReservaPostgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.reservaproducto.ReservaProductoDao;
 import co.edu.uco.pathorder.data.dao.entity.tipoProducto.TipoProductoDao;
 import co.edu.uco.pathorder.data.dao.entity.tipoProducto.impl.postgresql.TipoProductoPostgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.tiponotificacion.TipoNotificacionDao;
 import co.edu.uco.pathorder.data.dao.entity.usuario.UsuarioDao;
 import co.edu.uco.pathorder.data.dao.entity.usuario.impl.postgresql.UsuarioPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
@@ -77,6 +82,31 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public ReservaDao getReservaDAO() {
         return new ReservaPostgreSQLDAO(conexion);
+    }
+
+    @Override
+    public ReservaProductoDao getReservaProductoDAO() {
+        return null;
+    }
+
+    @Override
+    public NotificacionDao getNotificacionDAO() {
+        return null;
+    }
+
+    @Override
+    public TipoNotificacionDao getTipoNotificacionDAO() {
+        return null;
+    }
+
+    @Override
+    public FacturaDao getFacturaDAO() {
+        return null;
+    }
+
+    @Override
+    public DetalleFacturaDao getDetalleFacturaDAO() {
+        return null;
     }
 
     @Override
