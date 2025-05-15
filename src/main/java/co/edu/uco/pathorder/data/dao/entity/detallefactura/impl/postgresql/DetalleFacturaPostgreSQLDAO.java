@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.data.dao.entity.detallefactura.impl.postgresql;
 
 import co.edu.uco.pathorder.data.dao.entity.detallefactura.DetalleFacturaDao;
+import co.edu.uco.pathorder.entity.DetalleFacturaEntity;
 import co.edu.uco.pathorder.entity.UsuarioEntity;
 
 import java.sql.Connection;
@@ -16,7 +17,7 @@ public class DetalleFacturaPostgreSQLDAO implements DetalleFacturaDao {
     }
 
     @Override
-    public void create(UsuarioEntity entity) {
+    public void create(DetalleFacturaEntity entity) {
 
     }
 
@@ -26,22 +27,22 @@ public class DetalleFacturaPostgreSQLDAO implements DetalleFacturaDao {
     }
 
     @Override
-    public List<UsuarioEntity> listByFilter(UsuarioEntity entity) {
+    public List<DetalleFacturaEntity> listByFilter(DetalleFacturaEntity entity) {
         return List.of();
     }
 
     @Override
-    public List<UsuarioEntity> listAll() {
+    public List<DetalleFacturaEntity> listAll() {
         return List.of();
     }
 
     @Override
-    public UsuarioEntity listById(UUID uuid) {
+    public DetalleFacturaEntity listById(UUID uuid) {
         return null;
     }
 
     @Override
-    public void update(UUID uuid, UsuarioEntity entity) {
+    public void update(UUID uuid, DetalleFacturaEntity entity) {
 
     }
 }

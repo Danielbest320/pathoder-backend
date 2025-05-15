@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.data.dao.entity.notificacion.impl.postgresql;
 
 import co.edu.uco.pathorder.data.dao.entity.notificacion.NotificacionDao;
+import co.edu.uco.pathorder.entity.NotificacionEntity;
 import co.edu.uco.pathorder.entity.UsuarioEntity;
 
 import java.sql.Connection;
@@ -13,8 +14,9 @@ public class NotificacionPosgreSQLDAO implements NotificacionDao {
 
     public NotificacionPosgreSQLDAO(Connection conexion) {this.conexion = conexion;}
 
+
     @Override
-    public void create(UsuarioEntity entity) {
+    public void create(NotificacionEntity entity) {
 
     }
 
@@ -24,22 +26,22 @@ public class NotificacionPosgreSQLDAO implements NotificacionDao {
     }
 
     @Override
-    public List<UsuarioEntity> listByFilter(UsuarioEntity entity) {
+    public List<NotificacionEntity> listByFilter(NotificacionEntity entity) {
         return List.of();
     }
 
     @Override
-    public List<UsuarioEntity> listAll() {
+    public List<NotificacionEntity> listAll() {
         return List.of();
     }
 
     @Override
-    public UsuarioEntity listById(UUID uuid) {
+    public NotificacionEntity listById(UUID uuid) {
         return null;
     }
 
     @Override
-    public void update(UUID uuid, UsuarioEntity entity) {
+    public void update(UUID uuid, NotificacionEntity entity) {
 
     }
 }

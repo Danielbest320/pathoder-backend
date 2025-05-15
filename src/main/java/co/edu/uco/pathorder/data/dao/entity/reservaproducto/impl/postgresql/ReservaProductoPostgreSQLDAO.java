@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.data.dao.entity.reservaproducto.impl.postgresql;
 
 import co.edu.uco.pathorder.data.dao.entity.reservaproducto.ReservaProductoDao;
+import co.edu.uco.pathorder.entity.ReservaProductoEntity;
 import co.edu.uco.pathorder.entity.UsuarioEntity;
 
 import java.sql.Connection;
@@ -13,10 +14,7 @@ public class ReservaProductoPostgreSQLDAO implements ReservaProductoDao {
 
     public ReservaProductoPostgreSQLDAO(Connection conexion) {this.conexion = conexion;}
 
-    @Override
-    public void create(UsuarioEntity entity) {
 
-    }
 
     @Override
     public void delete(UUID uuid) {
@@ -24,22 +22,28 @@ public class ReservaProductoPostgreSQLDAO implements ReservaProductoDao {
     }
 
     @Override
-    public List<UsuarioEntity> listByFilter(UsuarioEntity entity) {
+    public List<ReservaProductoEntity> listByFilter(ReservaProductoEntity entity) {
         return List.of();
     }
 
     @Override
-    public List<UsuarioEntity> listAll() {
+    public List<ReservaProductoEntity> listAll() {
         return List.of();
     }
 
     @Override
-    public UsuarioEntity listById(UUID uuid) {
+    public ReservaProductoEntity listById(UUID uuid) {
         return null;
     }
 
+
     @Override
-    public void update(UUID uuid, UsuarioEntity entity) {
+    public void create(ReservaProductoEntity entity) {
+
+    }
+
+    @Override
+    public void update(UUID uuid, ReservaProductoEntity reservaProductoEntity) {
 
     }
 }
