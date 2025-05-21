@@ -1,16 +1,16 @@
 package co.edu.uco.pathorder.crosscutting.excepciones;
 
-import co.edu.uco.onlinetest.crosscutting.utilitarios.UtilObjeto;
-import co.edu.uco.onlinetest.crosscutting.utilitarios.UtilTexto;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 
-public class OnlineTestException extends Exception{
+public class PathOrderException extends Exception{
 
     private static final long serialVersionUID = 376198123456789L;
 
     private String mensajeUsuario;
     private LayerException capa;
 
-    protected OnlineTestException(String mensajeUsuario, String mensajeTecnico, Exception excepcionRaiz, LayerException capa) {
+    protected PathOrderException(String mensajeUsuario, String mensajeTecnico, Exception excepcionRaiz, LayerException capa) {
         super(mensajeTecnico, excepcionRaiz);
         setMensajeUsuario(mensajeUsuario);
         setCapa(capa);
@@ -29,7 +29,7 @@ public class OnlineTestException extends Exception{
     }
 
     public Throwable getExcepcionRaiz() {
-        return UtilObjeto.getIntance().obtenerValorDefecto(getCause(), new Exception(getMensajeUsuario()));
+        return UtilObjeto.getInstance().obtenerValorDefecto(getCause(), new Exception(getMensajeUsuario()));
     }
 
 
@@ -38,7 +38,7 @@ public class OnlineTestException extends Exception{
     }
 
     private void setCapa(LayerException capa) {
-        this.capa = UtilObjeto.getIntance().obtenerValorDefecto(capa, LayerException.GENERAL);
+        this.capa = UtilObjeto.getInstance().obtenerValorDefecto(capa, LayerException.GENERAL);
     }
 
 }

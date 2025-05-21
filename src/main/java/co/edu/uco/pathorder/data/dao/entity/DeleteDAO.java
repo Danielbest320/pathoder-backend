@@ -1,9 +1,11 @@
 package co.edu.uco.pathorder.data.dao.entity;
 
+import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
+
 public interface DeleteDAO<ID>{
 
 
-    void delete (ID id);
+    void delete (ID id) throws PathOrderException;
 
 
 
