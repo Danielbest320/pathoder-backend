@@ -1,10 +1,8 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.TipoNotificacionBusinessLogic;
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.AdministradorDomain;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
-import co.edu.uco.pathorder.entity.AdministradorEntity;
 import co.edu.uco.pathorder.entity.TipoNotificacionEntity;
 
 import java.util.List;

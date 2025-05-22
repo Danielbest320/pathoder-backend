@@ -1,11 +1,8 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.ReservaBusinessLogic;
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.ClienteDomain;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.ReservaDomain;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
-
-import co.edu.uco.pathorder.entity.ClienteEntity;
 import co.edu.uco.pathorder.entity.ReservaEntity;
 
 import java.util.List;

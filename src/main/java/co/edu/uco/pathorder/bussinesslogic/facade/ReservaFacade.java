@@ -1,6 +1,5 @@
 package co.edu.uco.pathorder.bussinesslogic.facade;
 
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.ReservaDomain;
 import co.edu.uco.pathorder.dto.ReservaDTO;
 
 import java.util.List;

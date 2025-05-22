@@ -1,6 +1,6 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic;
 
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.*;
+import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.NotificacionDomain;
 
 import java.util.List;
 

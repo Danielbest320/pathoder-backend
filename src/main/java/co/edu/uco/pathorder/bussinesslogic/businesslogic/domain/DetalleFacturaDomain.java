@@ -2,7 +2,7 @@ package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilNumerico;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.*;
+
 import java.util.UUID;
 
 public class DetalleFacturaDomain {

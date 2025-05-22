@@ -1,13 +1,11 @@
 package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.DetalleFacturaBusinessLogic;
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.DetalleFacturaDomain;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.DetalleFacturaBusinessLogicImpl;
 import co.edu.uco.pathorder.bussinesslogic.facade.DetalleFacturaFacade;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.data.dao.factory.Factory;
 import co.edu.uco.pathorder.dto.DetalleFacturaDTO;
-import co.edu.uco.pathorder.entity.DetalleFacturaEntity;
 
 import java.util.List;
 import java.util.UUID;

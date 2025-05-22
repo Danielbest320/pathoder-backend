@@ -1,10 +1,10 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 
-import java.util.UUID;
-
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
+
+import java.util.UUID;
 
 public  class EstadoDomain {
 

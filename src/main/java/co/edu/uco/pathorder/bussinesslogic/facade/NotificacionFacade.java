@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.bussinesslogic.facade;
 
 import co.edu.uco.pathorder.dto.NotificacionDTO;
+
 import java.util.List;
 
 public interface NotificacionFacade {

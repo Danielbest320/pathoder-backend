@@ -1,7 +1,6 @@
 package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.EstadoBusinessLogic;
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.ClienteBusinessLogicImpl;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.EstadoBusinessLogicImpl;
 import co.edu.uco.pathorder.bussinesslogic.facade.EstadoFacade;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;

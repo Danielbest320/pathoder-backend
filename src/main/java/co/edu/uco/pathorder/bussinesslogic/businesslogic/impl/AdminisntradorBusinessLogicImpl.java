@@ -2,11 +2,9 @@ package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.AdministradorBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.AdministradorDomain;
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.ClienteDomain;
 import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.entity.AdministradorEntity;
-import co.edu.uco.pathorder.entity.ClienteEntity;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,12 +1,10 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 
-import co.edu.uco.pathorder.bussinesslogic.businesslogic.NotificacionBusinessLogic;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilFechaHora;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 public class NotificacionDomain  {
