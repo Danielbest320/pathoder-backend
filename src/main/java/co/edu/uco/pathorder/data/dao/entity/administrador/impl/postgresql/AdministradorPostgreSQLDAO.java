@@ -71,7 +71,7 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
 
     @Override
     public List<AdministradorEntity> listByFilter(AdministradorEntity entity) throws PathOrderException {
-        var listaPaises = new ArrayList<AdministradorEntity>();
+        var listaAdministradores = new ArrayList<AdministradorEntity>();
         var sentenciaSQL = new StringBuilder();
         sentenciaSQL.append("SELECT id, di, nombre, apellido, correo, telefono, contrasena, ")
                 .append("confirmacion_correo, confirmacion_telefono, estado_cuenta, usuario ")
@@ -106,7 +106,7 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
                     admin.setConfirmacionTelefono(cursorResultado.getBoolean("confirmacion_telefono"));
                     admin.setEstadoCuenta(cursorResultado.getBoolean("estado_cuenta"));
                     admin.setUsuario(cursorResultado.getString("usuario"));
-                    listaPaises.add(admin);
+                    listaAdministradores.add(admin);
                 }
             }
         } catch (SQLException exception) {
@@ -118,7 +118,7 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
             var mensajeUsuario = "Ocurrió un error inesperado al listar administradores.";
             throw DataPathOrderException.reportar(mensajeUsuario, mensajeTecnico, exception);
         }
-        return listaPaises;
+        return listaAdministradores;
     }
 
     @Override
@@ -216,7 +216,7 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
             sentenciaPreparada.setObject(11, uuid);
             sentenciaPreparada.executeUpdate();
         } catch (SQLException exception) {
-            var mensajeTecnico = "Se presentó una.SQLException tratando de modificar un administrador.";
+            var mensajeTecnico = "Se presentó una SQLException tratando de modificar un administrador.";
             var mensajeUsuario = "No se pudo actualizar el administrador.";
             throw DataPathOrderException.reportar(mensajeUsuario, mensajeTecnico, exception);
         } catch (Exception exception) {
