@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 
 
+import co.edu.uco.pathorder.bussinesslogic.assembler.AdministradorAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.AdministradorBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.AdministradorDomain;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.AdminisntradorBusinessLogicImpl;
@@ -29,7 +30,7 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
         try {
             daoFactory.iniciartransaccion();
 
-            AdministradorDomain domain = null;
+            AdministradorDomain domain = AdministradorAssembler.toDomain(administrador);
             administradorBusinessLogic.registrarNuevoAdministrador(domain);
 
             daoFactory.confirmartransaccion();
@@ -52,7 +53,7 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
         try {
             daoFactory.iniciartransaccion();
 
-            AdministradorDomain domain = null;
+            AdministradorDomain domain = AdministradorAssembler.toDomain(administrador);
             administradorBusinessLogic.modificarAdministradorExistente(id, domain);
 
             daoFactory.confirmartransaccion();
@@ -95,8 +96,8 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
     @Override
     public AdministradorDTO consultarAdministradorPorId(UUID id) throws PathOrderException {
         try {
-            AdministradorDomain domain = administradorBusinessLogic.consultarAdministradorPorId(id);
-            return null;
+            var AdministradorDomainResultado  = administradorBusinessLogic.consultarAdministradorPorId(id);
+            return AdministradorAssembler.toDTO(AdministradorDomainResultado);
         } catch (PathOrderException e) {
             throw e;
         } catch (Exception e) {
@@ -112,9 +113,9 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
     @Override
     public List<AdministradorDTO> consultarAdministradores(AdministradorDTO filtro) throws PathOrderException {
         try {
-            AdministradorDomain domainFilter = null;
-            List<AdministradorDomain> domains = administradorBusinessLogic.consultarAdministradores(domainFilter);
-            return null;
+            AdministradorDomain domainFilter = AdministradorAssembler.toDomain(filtro);
+            var AdministradordomainResultado = administradorBusinessLogic.consultarAdministradores(domainFilter);
+            return AdministradorAssembler.toDTOList(AdministradordomainResultado);
         } catch (PathOrderException e) {
             throw e;
         } catch (Exception e) {

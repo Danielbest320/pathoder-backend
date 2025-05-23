@@ -2,6 +2,7 @@ package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.AdministradorBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.AdministradorDomain;
+import co.edu.uco.pathorder.bussinesslogic.mapper.AdministradorMapper;
 import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.entity.AdministradorEntity;
@@ -21,7 +22,7 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
 
     @Override
     public void registrarNuevoAdministrador(AdministradorDomain administrador) throws PathOrderException {
-        AdministradorEntity administradorEntity = null;
+        AdministradorEntity administradorEntity = AdministradorMapper.toEntity(administrador);
         factory.getAdministradorDAO().create(administradorEntity);
 
 
@@ -30,8 +31,8 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
 
     @Override
     public void modificarAdministradorExistente(UUID id, AdministradorDomain administrador) throws PathOrderException {
-        AdministradorEntity administradorEntity = null;
-        factory.getAdministradorDAO().create(administradorEntity);
+        AdministradorEntity administradorEntity = AdministradorMapper.toEntity(administrador);
+        factory.getAdministradorDAO().update(id,administradorEntity);
 
     }
 
@@ -48,9 +49,9 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
 
     @Override
     public List<AdministradorDomain> consultarAdministradores(AdministradorDomain filtro) throws PathOrderException {
-        AdministradorEntity administradorFilter = null;
-        List<AdministradorEntity> clienteEntities = factory.getAdministradorDAO().listByFilter(administradorFilter);
-        List<AdministradorDomain> datosARetornar = null;
+        AdministradorEntity administradorFilter = AdministradorMapper.toEntity(filtro);
+        List<AdministradorEntity> AdministradorEntities = factory.getAdministradorDAO().listByFilter(administradorFilter);
+        List<AdministradorDomain> datosARetornar = AdministradorMapper.toDomainList(AdministradorEntities);
 
         return datosARetornar;
     }
