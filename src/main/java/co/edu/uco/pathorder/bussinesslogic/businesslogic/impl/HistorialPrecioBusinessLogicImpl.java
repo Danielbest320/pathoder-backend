@@ -2,6 +2,7 @@ package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.HistorialPrecioBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.HistorialPrecioDomain;
+import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.entity.HistorialPrecioEntity;
 
@@ -16,13 +17,13 @@ public class HistorialPrecioBusinessLogicImpl implements HistorialPrecioBusiness
     }
 
     @Override
-    public void registrarNuevoPrecioHistorial(HistorialPrecioDomain historialPrecio) {
+    public void registrarNuevoPrecioHistorial(HistorialPrecioDomain historialPrecio) throws PathOrderException  {
         HistorialPrecioEntity historialPrecioEntity = null;
         factory.getHistorialPrecioDAO().create(historialPrecioEntity);
     }
 
     @Override
-    public List<HistorialPrecioDomain> consultarHistorialPrecioProducto(HistorialPrecioDomain filtro) {
+    public List<HistorialPrecioDomain> consultarHistorialPrecioProducto(HistorialPrecioDomain filtro) throws PathOrderException{
         HistorialPrecioEntity historialPrecioFilter = null;
         List<HistorialPrecioEntity> historialPrecioEntities = factory.getHistorialPrecioDAO().listByFilter(historialPrecioFilter);
         List<HistorialPrecioDomain> datosARetornar = null;

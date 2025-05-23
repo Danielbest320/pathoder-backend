@@ -3,6 +3,7 @@ package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.ProductoBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.ProductoBusinessLogicImpl;
 import co.edu.uco.pathorder.bussinesslogic.facade.ProductoFacade;
+import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.data.dao.factory.Factory;
 import co.edu.uco.pathorder.dto.ProductoDTO;
@@ -16,34 +17,34 @@ public class ProductoFacadeImpl implements ProductoFacade {
     private ProductoBusinessLogic productoBusinessLogic;
 
 
-    public ProductoFacadeImpl() {
+    public ProductoFacadeImpl() throws PathOrderException {
         daoFactory = DAOFactory.getFactory(Factory.POSTGRES_SQL);
         productoBusinessLogic = new ProductoBusinessLogicImpl(daoFactory);
 
     }
 
     @Override
-    public void registrarProducto(ProductoDTO producto) {
+    public void registrarProducto(ProductoDTO producto) throws PathOrderException{
 
     }
 
     @Override
-    public void modificarProducto(UUID id, ProductoDTO producto) {
+    public void modificarProducto(UUID id, ProductoDTO producto) throws PathOrderException {
 
     }
 
     @Override
-    public void eliminarProducto(UUID id) {
+    public void eliminarProducto(UUID id) throws PathOrderException {
 
     }
 
     @Override
-    public List<ProductoDTO> consultarProducto(ProductoDTO filtro) {
+    public List<ProductoDTO> consultarProducto(ProductoDTO filtro) throws PathOrderException{
         return List.of();
     }
 
     @Override
-    public List<ProductoDTO> consultarProductoDisponible(ProductoDTO filtro) {
+    public List<ProductoDTO> consultarProductoDisponible(ProductoDTO filtro) throws PathOrderException{
         return List.of();
     }
 }

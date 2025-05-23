@@ -3,6 +3,7 @@ package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.InventarioBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.InventarioBusinessLogicImpl;
 import co.edu.uco.pathorder.bussinesslogic.facade.InventarioFacade;
+import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.data.dao.factory.Factory;
 import co.edu.uco.pathorder.dto.InventarioDTO;
@@ -16,34 +17,34 @@ public class InventarioFacadeImpl implements InventarioFacade {
     private InventarioBusinessLogic inventarioBusinessLogic;
 
 
-    public InventarioFacadeImpl() {
+    public InventarioFacadeImpl() throws PathOrderException {
         daoFactory = DAOFactory.getFactory(Factory.POSTGRES_SQL);
         inventarioBusinessLogic = new InventarioBusinessLogicImpl(daoFactory);
 
     }
 
     @Override
-    public void crearInventario(InventarioDTO inventario) {
+    public void crearInventario(InventarioDTO inventario) throws PathOrderException{
 
     }
 
     @Override
-    public void actualizarInventario(InventarioDTO inventario, UUID id) {
+    public void actualizarInventario(InventarioDTO inventario, UUID id) throws PathOrderException{
 
     }
 
     @Override
-    public void actualizarInventarioMomentoReserva(InventarioDTO inventario, UUID id) {
+    public void actualizarInventarioMomentoReserva(InventarioDTO inventario, UUID id) throws PathOrderException {
 
     }
 
     @Override
-    public void eliminarInventario(UUID id) {
+    public void eliminarInventario(UUID id) throws PathOrderException {
 
     }
 
     @Override
-    public List<InventarioDTO> consultarInventario(InventarioDTO filtro) {
+    public List<InventarioDTO> consultarInventario(InventarioDTO filtro) throws PathOrderException {
         return List.of();
     }
 }
