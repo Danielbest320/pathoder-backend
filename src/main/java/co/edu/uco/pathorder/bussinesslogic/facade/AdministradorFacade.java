@@ -8,11 +8,11 @@ import java.util.UUID;
 
 public interface AdministradorFacade {
 
-    void registrarNuevoAdministrador(AdministradorDTO administrador) throws PathOrderException;
+    void registrarAdministrador(AdministradorDTO administrador) throws PathOrderException;
 
-    void modificarAdministradorExistente(UUID id, AdministradorDTO administrador) throws PathOrderException;
+    void actualizarInformacionAdministrador(UUID id, AdministradorDTO administrador) throws PathOrderException;
 
-    void darbajaDefinitivamenteAdministradorExistente(UUID id) throws PathOrderException;
+    void eliminarCuentaAdministrador(UUID id) throws PathOrderException;
 
     AdministradorDTO consultarAdministradorPorId(UUID id) throws PathOrderException;
 

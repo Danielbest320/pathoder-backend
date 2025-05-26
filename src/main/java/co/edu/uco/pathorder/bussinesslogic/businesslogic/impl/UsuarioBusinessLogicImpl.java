@@ -2,6 +2,7 @@ package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.UsuarioBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.UsuarioDomain;
+import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.entity.UsuarioEntity;
 
@@ -17,19 +18,19 @@ public class UsuarioBusinessLogicImpl implements UsuarioBusinessLogic {
     }
 
     @Override
-    public void registrarNuevoUsuario(UsuarioDomain usuario) {
+    public void registrarNuevoUsuario(UsuarioDomain usuario) throws PathOrderException {
         UsuarioEntity usuarioEntity = null;
         factory.getUsuarioDAO().create(usuarioEntity);
     }
 
     @Override
-    public void modificarUsuarioExistente(UUID id, UsuarioDomain usuario) {
+    public void modificarUsuarioExistente(UUID id, UsuarioDomain usuario) throws PathOrderException {
         UsuarioEntity usuarioEntity = null;
         factory.getUsuarioDAO().update(id, usuarioEntity);
     }
 
     @Override
-    public void darbajaDefinitivamenteUsuarioExistente(UUID id) {
+    public void darbajaDefinitivamenteUsuarioExistente(UUID id) throws PathOrderException {
         factory.getUsuarioDAO().delete(id);
     }
 
@@ -39,7 +40,7 @@ public class UsuarioBusinessLogicImpl implements UsuarioBusinessLogic {
     }
 
     @Override
-    public List<UsuarioDomain> consultarUsuarios(UsuarioDomain filtro) {
+    public List<UsuarioDomain> consultarUsuarios(UsuarioDomain filtro) throws PathOrderException {
         UsuarioEntity usuarioFilter = null;
         List<UsuarioEntity> usuarioEntities = factory.getUsuarioDAO().listByFilter(usuarioFilter);
         List<UsuarioDomain> datosARetornar = null;

@@ -1,5 +1,8 @@
 package co.edu.uco.pathorder.bussinesslogic.assembler;
 
+import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.AdministradorDomain;
+import co.edu.uco.pathorder.dto.AdministradorDTO;
+
 import java.util.List;
 
 public interface DTOAssembler<T, D> {

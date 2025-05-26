@@ -26,12 +26,13 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
     }
 
     @Override
-    public void registrarNuevoAdministrador(AdministradorDTO administrador) throws PathOrderException {
+    public void registrarAdministrador(AdministradorDTO administrador) throws PathOrderException {
+        daoFactory.abrirConexion();
         try {
             daoFactory.iniciartransaccion();
 
             AdministradorDomain domain = AdministradorAssembler.toDomain(administrador);
-            administradorBusinessLogic.registrarNuevoAdministrador(domain);
+            administradorBusinessLogic.registrarAdministrador(domain);
 
             daoFactory.confirmartransaccion();
 
@@ -49,12 +50,13 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
     }
 
     @Override
-    public void modificarAdministradorExistente(UUID id, AdministradorDTO administrador) throws PathOrderException {
+    public void actualizarInformacionAdministrador(UUID id, AdministradorDTO administrador) throws PathOrderException {
+        daoFactory.abrirConexion();
         try {
             daoFactory.iniciartransaccion();
 
             AdministradorDomain domain = AdministradorAssembler.toDomain(administrador);
-            administradorBusinessLogic.modificarAdministradorExistente(id, domain);
+            administradorBusinessLogic.actualizarInformacionAdministrador(id, domain);
 
             daoFactory.confirmartransaccion();
 
@@ -72,11 +74,12 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
     }
 
     @Override
-    public void darbajaDefinitivamenteAdministradorExistente(UUID id) throws PathOrderException {
+    public void eliminarCuentaAdministrador(UUID id) throws PathOrderException {
+        daoFactory.abrirConexion();
         try {
             daoFactory.iniciartransaccion();
 
-            administradorBusinessLogic.darbajaDefinitivamenteAdministradorExistente(id);
+            administradorBusinessLogic.eliminarCuentaAdministrador(id);
 
             daoFactory.confirmartransaccion();
 
@@ -95,6 +98,7 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
 
     @Override
     public AdministradorDTO consultarAdministradorPorId(UUID id) throws PathOrderException {
+        daoFactory.abrirConexion();
         try {
             var AdministradorDomainResultado  = administradorBusinessLogic.consultarAdministradorPorId(id);
             return AdministradorAssembler.toDTO(AdministradorDomainResultado);
@@ -112,6 +116,7 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
 
     @Override
     public List<AdministradorDTO> consultarAdministradores(AdministradorDTO filtro) throws PathOrderException {
+        daoFactory.abrirConexion();
         try {
             AdministradorDomain domainFilter = AdministradorAssembler.toDomain(filtro);
             var AdministradordomainResultado = administradorBusinessLogic.consultarAdministradores(domainFilter);

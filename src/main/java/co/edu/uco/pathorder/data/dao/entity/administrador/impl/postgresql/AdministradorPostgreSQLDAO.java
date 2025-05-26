@@ -82,7 +82,7 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
             sentenciaSQL.append(" AND id = ?");
         }
         if (filtrarUsuario) {
-            sentenciaSQL.append(" AND usuario LIKE ?");
+            sentenciaSQL.append(" AND LOWER(usuario) LIKE LOWER(?)");
         }
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
             var parametroIndex = 1;

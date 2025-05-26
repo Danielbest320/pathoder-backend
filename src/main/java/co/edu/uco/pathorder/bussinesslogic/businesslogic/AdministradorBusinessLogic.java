@@ -8,11 +8,11 @@ import java.util.UUID;
 
 public interface AdministradorBusinessLogic {
 
-    void registrarNuevoAdministrador(AdministradorDomain administrador) throws PathOrderException;
+    void registrarAdministrador(AdministradorDomain administrador) throws PathOrderException;
 
-    void modificarAdministradorExistente(UUID id, AdministradorDomain administrador) throws PathOrderException;
+    void actualizarInformacionAdministrador(UUID id, AdministradorDomain administrador) throws PathOrderException;
 
-    void darbajaDefinitivamenteAdministradorExistente(UUID id) throws PathOrderException;
+    void eliminarCuentaAdministrador(UUID id) throws PathOrderException;
 
     AdministradorDomain consultarAdministradorPorId(UUID id) throws PathOrderException;
 

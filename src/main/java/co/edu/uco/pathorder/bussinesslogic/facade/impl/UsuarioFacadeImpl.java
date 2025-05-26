@@ -3,6 +3,7 @@ package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.UsuarioBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.UsuarioBusinessLogicImpl;
 import co.edu.uco.pathorder.bussinesslogic.facade.UsuarioFacade;
+import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.data.dao.factory.Factory;
 import co.edu.uco.pathorder.dto.UsuarioDTO;
@@ -16,7 +17,7 @@ public class UsuarioFacadeImpl  implements UsuarioFacade {
     private UsuarioBusinessLogic usuarioBusinessLogic;
 
 
-    public UsuarioFacadeImpl() {
+    public UsuarioFacadeImpl() throws PathOrderException {
         daoFactory = DAOFactory.getFactory(Factory.POSTGRES_SQL);
         usuarioBusinessLogic = new UsuarioBusinessLogicImpl(daoFactory);
 
