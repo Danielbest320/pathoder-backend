@@ -19,8 +19,8 @@ public final class DetalleFacturaDTO {
         setReservaProducto(ReservaProductoDTO.obtenerValorDefecto());
         setFactura(FacturaDTO.obtenerValorDefecto());
         setCantidad(UtilNumerico.getInstance().obtenerValorDefecto());
-        setPrecioVenta(UtilNumerico.getInstance().obtenerValorDefecto());
-        setSubTotal(UtilNumerico.getInstance().obtenerValorDefecto());
+        setPrecioVenta(UtilPrecio.getInstance().obtenerValorDefecto());
+        setSubTotal(UtilPrecio.getInstance().obtenerValorDefecto());
     }
 
     public DetalleFacturaDTO(final UUID id){
@@ -28,8 +28,8 @@ public final class DetalleFacturaDTO {
         setReservaProducto(ReservaProductoDTO.obtenerValorDefecto());
         setFactura(FacturaDTO.obtenerValorDefecto());
         setCantidad(UtilNumerico.getInstance().obtenerValorDefecto());
-        setPrecioVenta(UtilNumerico.getInstance().obtenerValorDefecto());
-        setSubTotal(UtilNumerico.getInstance().obtenerValorDefecto());
+        setPrecioVenta(UtilPrecio.getInstance().obtenerValorDefecto());
+        setSubTotal(UtilPrecio.getInstance().obtenerValorDefecto());
     }
 
     public DetalleFacturaDTO(final UUID id, final ReservaProductoDTO reservaProducto, final FacturaDTO factura, final int cantidad, final int precioVenta, final int subTotal) {
@@ -55,7 +55,7 @@ public final class DetalleFacturaDTO {
     }
 
     public DetalleFacturaDTO setPrecioVenta(int precioVenta) {
-        this.precioVenta = UtilNumerico.getInstance().obtenerValorDefecto(precioVenta);
+        this.precioVenta = UtilPrecio.getInstance().obtenerValorDefecto(precioVenta);
         return this;
     }
 
@@ -82,7 +82,7 @@ public final class DetalleFacturaDTO {
     }
 
     public DetalleFacturaDTO setSubTotal(int subTotal) {
-        this.subTotal = UtilNumerico.getInstance().obtenerValorDefecto(subTotal);
+        this.subTotal = UtilPrecio.getInstance().obtenerValorDefecto(subTotal);
         return this;
     }
 

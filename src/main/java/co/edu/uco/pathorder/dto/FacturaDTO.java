@@ -17,14 +17,14 @@ public final class FacturaDTO {
         setId(UtilUUID.obtenerValorDefecto());
         setAdministrador(AdministradorDTO.obtenerValorDefecto());
         setFechaHora(UtilFechaHora.getInstance().obtenerValorDefecto());
-        setTotal(UtilNumerico.getInstance().obtenerValorDefecto());
+        setTotal(UtilPrecio.getInstance().obtenerValorDefecto());
     }
 
     public FacturaDTO(final UUID id) {
         setId(id);
         setAdministrador(AdministradorDTO.obtenerValorDefecto());
         setFechaHora(UtilFechaHora.getInstance().obtenerValorDefecto());
-        setTotal(UtilNumerico.getInstance().obtenerValorDefecto());
+        setTotal(UtilPrecio.getInstance().obtenerValorDefecto());
     }
 
     public FacturaDTO(final UUID id, final AdministradorDTO administrador, final LocalDateTime fechaHora, final int total) {
@@ -66,7 +66,7 @@ public final class FacturaDTO {
     }
 
     public FacturaDTO setTotal(int total) {
-        this.total = UtilNumerico.getInstance().obtenerValorDefecto(total);
+        this.total = UtilPrecio.getInstance().obtenerValorDefecto(total);
         return this;
     }
 

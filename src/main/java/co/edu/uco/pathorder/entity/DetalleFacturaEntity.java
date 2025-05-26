@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.entity;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilNumerico;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilPrecio;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 
 import java.util.UUID;
@@ -19,8 +20,8 @@ public final class DetalleFacturaEntity {
         setReservaProducto(ReservaProductoEntity.obtenerValorDefecto());
         setFactura(FacturaEntity.obtenerValorDefecto());
         setCantidad(UtilNumerico.getInstance().obtenerValorDefecto());
-        setPrecioVenta(UtilNumerico.getInstance().obtenerValorDefecto());
-        setSubTotal(UtilNumerico.getInstance().obtenerValorDefecto());
+        setPrecioVenta(UtilPrecio.getInstance().obtenerValorDefecto());
+        setSubTotal(UtilPrecio.getInstance().obtenerValorDefecto());
     }
 
     public DetalleFacturaEntity(final UUID id){
@@ -28,8 +29,8 @@ public final class DetalleFacturaEntity {
         setReservaProducto(ReservaProductoEntity.obtenerValorDefecto());
         setFactura(FacturaEntity.obtenerValorDefecto());
         setCantidad(UtilNumerico.getInstance().obtenerValorDefecto());
-        setPrecioVenta(UtilNumerico.getInstance().obtenerValorDefecto());
-        setSubTotal(UtilNumerico.getInstance().obtenerValorDefecto());
+        setPrecioVenta(UtilPrecio.getInstance().obtenerValorDefecto());
+        setSubTotal(UtilPrecio.getInstance().obtenerValorDefecto());
     }
 
     public DetalleFacturaEntity(final UUID id, final ReservaProductoEntity reservaProducto, final FacturaEntity factura, final int cantidad, final int precioVenta, final int subTotal) {
@@ -78,7 +79,7 @@ public final class DetalleFacturaEntity {
     }
 
     public void setSubTotal(int subTotal) {
-        this.subTotal = UtilNumerico.getInstance().obtenerValorDefecto(subTotal);
+        this.subTotal = UtilPrecio.getInstance().obtenerValorDefecto(subTotal);
     }
 
     public ReservaProductoEntity getReservaProducto() {
