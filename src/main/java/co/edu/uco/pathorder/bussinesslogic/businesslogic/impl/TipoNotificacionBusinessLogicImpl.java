@@ -2,6 +2,7 @@ package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.TipoNotificacionBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
+import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.entity.TipoNotificacionEntity;
 
@@ -16,13 +17,13 @@ public class TipoNotificacionBusinessLogicImpl implements TipoNotificacionBusine
     }
 
     @Override
-    public void crearTiposNotificacion(TipoNotificacionDomain tipoNotificacionDomain) {
+    public void crearTiposNotificacion(TipoNotificacionDomain tipoNotificacionDomain) throws PathOrderException {
         TipoNotificacionEntity tipoNotificacionEntity = new TipoNotificacionEntity();
         factory.getTipoNotificacionDAO().create(tipoNotificacionEntity);
     }
 
     @Override
-    public List<TipoNotificacionDomain> consultarTiposNotificacion(TipoNotificacionDomain filtro) {
+    public List<TipoNotificacionDomain> consultarTiposNotificacion(TipoNotificacionDomain filtro) throws PathOrderException{
         TipoNotificacionEntity tipoNotificacionEntity = new TipoNotificacionEntity();
         List<TipoNotificacionEntity> tipoNotificacionEntities = factory.getTipoNotificacionDAO().listByFilter(tipoNotificacionEntity);
         List<TipoNotificacionDomain> datosARetornar = null;

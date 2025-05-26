@@ -2,6 +2,7 @@ package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.FacturaBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.FacturaDomain;
+import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.entity.FacturaEntity;
 
@@ -17,13 +18,13 @@ public class FacturaBusinessLogicImpl implements FacturaBusinessLogic {
     }
 
     @Override
-    public void generarFactura(FacturaDomain factura) {
+    public void generarFactura(FacturaDomain factura) throws PathOrderException{
         FacturaEntity facturaEntity = new FacturaEntity();
         factory.getFacturaDAO().create(facturaEntity);
     }
 
     @Override
-    public List<FacturaDomain> consultarFactura(FacturaDomain filtro) {
+    public List<FacturaDomain> consultarFactura(FacturaDomain filtro) throws PathOrderException {
         FacturaEntity facturaEntity = new FacturaEntity();
 
         List<FacturaEntity> facturaEntities = factory.getFacturaDAO().listByFilter(facturaEntity);
@@ -32,7 +33,7 @@ public class FacturaBusinessLogicImpl implements FacturaBusinessLogic {
     }
 
     @Override
-    public List<FacturaDomain> consultarFacturaCliente(FacturaDomain filtro) {
+    public List<FacturaDomain> consultarFacturaCliente(FacturaDomain filtro) throws PathOrderException{
         FacturaEntity facturaEntity = new FacturaEntity();
 
         List<FacturaEntity> facturaEntities = factory.getFacturaDAO().listByFilter(facturaEntity);
@@ -41,7 +42,7 @@ public class FacturaBusinessLogicImpl implements FacturaBusinessLogic {
     }
 
     @Override
-    public void anularFactura(UUID id) {
+    public void anularFactura(UUID id) throws PathOrderException {
         factory.getFacturaDAO().delete(id);
     }
 }

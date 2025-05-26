@@ -13,7 +13,7 @@ import co.edu.uco.pathorder.data.dao.entity.estado.EstadoDao;
 import co.edu.uco.pathorder.data.dao.entity.categoria.CategoriaDao;
 import co.edu.uco.pathorder.data.dao.entity.estado.impl.postgreSQLDAO.EstadoPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.factura.FacturaDao;
-import co.edu.uco.pathorder.data.dao.entity.factura.impl.postgresql.FacturaPosgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.factura.impl.postgresql.FacturaPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.historialPrecio.HistorialPrecioDao;
 import co.edu.uco.pathorder.data.dao.entity.historialPrecio.impl.postgresql.HistorialPrecioPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.horarioLocal.HorarioLocalDao;
@@ -23,7 +23,8 @@ import co.edu.uco.pathorder.data.dao.entity.ingredienteProducto.impl.postgresql.
 import co.edu.uco.pathorder.data.dao.entity.inventario.InventarioDao;
 import co.edu.uco.pathorder.data.dao.entity.inventario.impl.postgresql.InventarioPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.notificacion.NotificacionDao;
-import co.edu.uco.pathorder.data.dao.entity.notificacion.impl.postgresql.NotificacionPosgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.notificacion.impl.postgresql.NotificacionPostgreSQLDAO;
+import co.edu.uco.pathorder.data.dao.entity.notificacion.impl.postgresql.NotificacionPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.producto.ProductoDao;
 import co.edu.uco.pathorder.data.dao.entity.producto.impl.postgresql.ProductoPostgreSQLDAO;
 import co.edu.uco.pathorder.data.dao.entity.reserva.ReservaDao;
@@ -228,7 +229,7 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public NotificacionDao getNotificacionDAO() throws PathOrderException {
         asegurarConexionAbierta();
-        return new NotificacionPosgreSQLDAO(conexion);
+        return new NotificacionPostgreSQLDAO(conexion);
     }
 
     @Override
@@ -240,7 +241,7 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public FacturaDao getFacturaDAO() throws PathOrderException {
         asegurarConexionAbierta();
-        return new FacturaPosgreSQLDAO(conexion);
+        return new FacturaPostgreSQLDAO(conexion);
     }
 
     @Override
