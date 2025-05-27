@@ -1,5 +1,4 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
-
 import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.entity.TipoNotificacionEntityAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.TipoNotificacionBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
