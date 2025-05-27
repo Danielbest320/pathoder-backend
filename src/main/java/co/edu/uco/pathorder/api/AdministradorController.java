@@ -42,7 +42,7 @@ public class AdministradorController {
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody AdministradorDTO administrador) throws PathOrderException {
         administradorFacade.registrarAdministrador(administrador);
-        String mensaje = "El administrador " + administrador.getNombre() + " ha sido creado correctamente";
+        var mensaje = "El administrador " + administrador.getNombre() + " ha sido creado correctamente";
         return new ResponseEntity<>(mensaje, HttpStatus.OK);
     }
 
