@@ -1,6 +1,7 @@
 package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 
 //import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.dto.TipoNotificacionDTOAssembler;
+import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.dto.TipoNotificacionDTOAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.TipoNotificacionBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.TipoNotificacionBusinessLogicImpl;
@@ -10,9 +11,11 @@ import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.data.dao.factory.Factory;
 import co.edu.uco.pathorder.dto.TipoNotificacionDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//@Service
 public class TipoNotificacionFacadeImpl implements TipoNotificacionFacade {
 
     private final DAOFactory daoFactory;
@@ -26,12 +29,13 @@ public class TipoNotificacionFacadeImpl implements TipoNotificacionFacade {
     @Override
     public void crearTiposNotificacion(TipoNotificacionDTO tipoNotificacionDTO) throws PathOrderException {
         try {
+
             daoFactory.iniciartransaccion();
 
-            TipoNotificacionDomain domain = null;
+            TipoNotificacionDomain domain = TipoNotificacionDTOAssembler.getINSTANCE().toDomain(tipoNotificacionDTO);
             tipoNotificacionBusinessLogic.crearTiposNotificacion(domain);
-
             daoFactory.confirmartransaccion();
+
         } catch (PathOrderException e) {
             daoFactory.cancelartransaccion();
             throw e;
@@ -50,7 +54,7 @@ public class TipoNotificacionFacadeImpl implements TipoNotificacionFacade {
         try {
             daoFactory.iniciartransaccion();
 
-            TipoNotificacionDomain domainFilter = null;
+            TipoNotificacionDomain domainFilter = TipoNotificacionDTOAssembler.getINSTANCE().toDomain(filtro);
             var resultado = tipoNotificacionBusinessLogic.consultarTiposNotificacion(domainFilter);
 
             daoFactory.confirmartransaccion();

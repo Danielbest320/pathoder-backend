@@ -31,6 +31,7 @@ public class TipoNotificacionPostgreSQLDAO implements TipoNotificacionDao {
             sentenciaPreparada.setString(3, entity.getMensaje());
             sentenciaPreparada.setString(4, entity.getDescripcion());
             sentenciaPreparada.executeUpdate();
+            System.out.println("No hay error");
         } catch (SQLException exception) {
             var mensajeTecnico = "Se presentó un error al registrar un tipo de notificación.";
             var mensajeUsuario = "No fue posible registrar el tipo de notificación.";

@@ -33,12 +33,12 @@ public class ReservaProductoEntityAssembler implements EntityAssembler<ReservaPr
 
     @Override
     public ReservaProductoDomain toDomain(ReservaProductoEntity entity) {
-//        return UtilObjeto.getInstance().esNulo(entity)
-//                ? ReservaProductoEntity.obtenerValorDefecto()
-//                : new ReservaProductoDomain(entity.getId(),
-//                ResevaEntityAssembler.getInstance().toDomain(entity.getReserva()),
-//                ProductoEntityAssembler.getInstance().toDomain(entity.getProducto(),
-//                entity.getCantidad());
+//        var reservaProductoEntity = ReservaProductoEntity.obtenerValorDefecto(entity);
+//
+//        return  new ReservaProductoDomain(reservaProductoEntity.getId(),
+//                ResevaEntityAssembler.getInstance().toDomain(reservaProductoEntity.getReserva()),
+//                ProductoEntityAssembler.getInstance().toDomain(reservaProductoEntity.getProducto()),
+//                reservaProductoEntity.getCantidad());
         return null;
     }
 
