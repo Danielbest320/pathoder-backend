@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class IngredienteProductoPostgreSQLDAO implements IngredienteProductoDao {
 
-    private Connection conexion;
+    private final Connection conexion;
 
     public IngredienteProductoPostgreSQLDAO(Connection conexion){
         this.conexion = conexion;

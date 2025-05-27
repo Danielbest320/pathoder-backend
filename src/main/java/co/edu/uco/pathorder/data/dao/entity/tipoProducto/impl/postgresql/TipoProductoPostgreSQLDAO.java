@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class TipoProductoPostgreSQLDAO implements TipoProductoDao {
 
-    private Connection conexion;
+    private final Connection conexion;
 
     public TipoProductoPostgreSQLDAO(Connection conexion){
         this.conexion = conexion;

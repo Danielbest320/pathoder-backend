@@ -1,5 +1,6 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
+import co.edu.uco.pathorder.bussinesslogic.assembler.ingredienteProducto.entity.IngredienteProductoEntityAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.IngredienteProductoBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.IngredienteProductoDomain;
 import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
@@ -19,13 +20,13 @@ public class IngredienteProductoBusinessLogicImpl implements IngredienteProducto
 
     @Override
     public void asignarIngredienteProducto(IngredienteProductoDomain ingredienteProducto) throws PathOrderException {
-        IngredienteProductoEntity ingredienteProductoEntity = null;
+        IngredienteProductoEntity ingredienteProductoEntity = IngredienteProductoEntityAssembler.getInstance().toEntity(ingredienteProducto);
         factory.getIngredienteProductoDAO().create(ingredienteProductoEntity);
     }
 
     @Override
     public void modificarCantidadIngrediente(IngredienteProductoDomain ingredienteProducto, UUID id) throws PathOrderException{
-        IngredienteProductoEntity ingredienteProductoEntity = null;
+        IngredienteProductoEntity ingredienteProductoEntity = IngredienteProductoEntityAssembler.getInstance().toEntity(ingredienteProducto);
         factory.getIngredienteProductoDAO().update(id, ingredienteProductoEntity);
     }
 
@@ -36,9 +37,9 @@ public class IngredienteProductoBusinessLogicImpl implements IngredienteProducto
 
     @Override
     public List<IngredienteProductoDomain> consultarIngredientesProductos(IngredienteProductoDomain filtro) throws PathOrderException{
-        IngredienteProductoEntity ingredienteProductoFilter = null;
+        IngredienteProductoEntity ingredienteProductoFilter = IngredienteProductoEntityAssembler.getInstance().toEntity(filtro);
         List<IngredienteProductoEntity> ingredienteProductoEntities = factory.getIngredienteProductoDAO().listByFilter(ingredienteProductoFilter);
-        List<IngredienteProductoDomain> datosARetornar = null;
+        List<IngredienteProductoDomain> datosARetornar = IngredienteProductoEntityAssembler.getInstance().toDomains(ingredienteProductoEntities);
 
         return datosARetornar;
     }

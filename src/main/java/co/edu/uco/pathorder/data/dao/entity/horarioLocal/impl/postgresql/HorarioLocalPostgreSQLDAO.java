@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class HorarioLocalPostgreSQLDAO implements HorarioLocalDao {
 
-    private Connection conexion;
+    private final Connection conexion;
 
     public HorarioLocalPostgreSQLDAO(Connection conexion){
         this.conexion = conexion;

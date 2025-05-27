@@ -24,7 +24,7 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
     public void create(ProductoEntity entity) throws PathOrderException {
         var sentenciaSQL = new StringBuilder();
 
-        sentenciaSQL.append("INSERT INTO Producto(id, nombre, tipo_producto, descripcion, precio, categoria) VALUES(?, ?, ?, ?, ?, ?);");
+        sentenciaSQL.append("INSERT INTO Producto(id, nombre, tipoproductoid, descripcion, precioventa, categoriaid) VALUES(?, ?, ?, ?, ?, ?);");
 
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
             sentenciaPreparada.setObject(1, entity.getId());
@@ -75,10 +75,14 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
         var listaProductos = new ArrayList<ProductoEntity>();
         var sentenciaSQL = new StringBuilder();
 
-        sentenciaSQL.append("SELECT id, nombre, tipo_producto, descripcion, precio, categoria FROM Producto WHERE 1=1");
+        sentenciaSQL.append("SELECT id, nombre, tipoproductoid, descripcion, precioventa, categoriaid FROM Producto WHERE 1=1");
 
         var filtrarId = entity != null && entity.getId() != null;
         var filtrarNombre = entity != null && entity.getNombre() != null && !entity.getNombre().isBlank();
+        var filtrarTipoProducto = entity != null && entity.getTipoProducto() != null && entity.getTipoProducto().getId() != null;
+        var filtrarCategoria = entity != null && entity.getCategoria() != null && entity.getCategoria().getId() != null;
+        var filtrarPrecio = entity != null && entity.getPrecio() > 0;
+        var filtrarDescripcion = entity != null && entity.getDescripcion() != null && !entity.getDescripcion().isBlank();
 
         if (filtrarId) {
             sentenciaSQL.append(" AND id = ?");
@@ -86,14 +90,39 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
         if (filtrarNombre) {
             sentenciaSQL.append(" AND nombre ILIKE ?");
         }
+        if (filtrarTipoProducto) {
+            sentenciaSQL.append(" AND tipoproductoid = ?");
+        }
+        if (filtrarCategoria) {
+            sentenciaSQL.append(" AND categoriaid = ?");
+        }
+        if (filtrarPrecio) {
+            sentenciaSQL.append(" AND precioventa = ?");
+        }
+        if (filtrarDescripcion) {
+            sentenciaSQL.append(" AND descripcion ILIKE ?");
+        }
 
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
             var parametroIndex = 1;
+
             if (filtrarId) {
                 sentenciaPreparada.setObject(parametroIndex++, entity.getId());
             }
             if (filtrarNombre) {
                 sentenciaPreparada.setString(parametroIndex++, "%" + entity.getNombre().trim() + "%");
+            }
+            if (filtrarTipoProducto) {
+                sentenciaPreparada.setObject(parametroIndex++, entity.getTipoProducto().getId());
+            }
+            if (filtrarCategoria) {
+                sentenciaPreparada.setObject(parametroIndex++, entity.getCategoria().getId());
+            }
+            if (filtrarPrecio) {
+                sentenciaPreparada.setInt(parametroIndex++, entity.getPrecio());
+            }
+            if (filtrarDescripcion) {
+                sentenciaPreparada.setString(parametroIndex++, "%" + entity.getDescripcion().trim() + "%");
             }
 
             try (var cursorResultado = sentenciaPreparada.executeQuery()) {
@@ -103,14 +132,14 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
                     producto.setNombre(cursorResultado.getString("nombre"));
 
                     var tipoProducto = new co.edu.uco.pathorder.entity.TipoProductoEntity();
-                    tipoProducto.setId(UtilUUID.convertirAUUID(cursorResultado.getString("tipo_producto")));
+                    tipoProducto.setId(UtilUUID.convertirAUUID(cursorResultado.getString("tipoproductoid")));
                     producto.setTipoProducto(tipoProducto);
 
                     producto.setDescripcion(cursorResultado.getString("descripcion"));
-                    producto.setPrecio(cursorResultado.getInt("precio"));
+                    producto.setPrecio(cursorResultado.getInt("precioventa"));
 
                     var categoria = new co.edu.uco.pathorder.entity.CategoriaEntity();
-                    categoria.setId(UtilUUID.convertirAUUID(cursorResultado.getString("categoria")));
+                    categoria.setId(UtilUUID.convertirAUUID(cursorResultado.getString("categoriaid")));
                     producto.setCategoria(categoria);
 
                     listaProductos.add(producto);
@@ -129,12 +158,13 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
         return listaProductos;
     }
 
+
     @Override
     public List<ProductoEntity> listAll() throws PathOrderException {
         var listaProductos = new ArrayList<ProductoEntity>();
         var sentenciaSQL = new StringBuilder();
 
-        sentenciaSQL.append("SELECT id, nombre, tipo_producto, descripcion, precio, categoria FROM Producto");
+        sentenciaSQL.append("SELECT id, nombre, tipoproductoid, descripcion, precioventa, categoriaid FROM Producto");
 
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString());
              var cursorResultado = sentenciaPreparada.executeQuery()) {
@@ -144,14 +174,14 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
                 producto.setNombre(cursorResultado.getString("nombre"));
 
                 var tipoProducto = new co.edu.uco.pathorder.entity.TipoProductoEntity();
-                tipoProducto.setId(UtilUUID.convertirAUUID(cursorResultado.getString("tipo_producto")));
+                tipoProducto.setId(UtilUUID.convertirAUUID(cursorResultado.getString("tipoproductoid")));
                 producto.setTipoProducto(tipoProducto);
 
                 producto.setDescripcion(cursorResultado.getString("descripcion"));
-                producto.setPrecio(cursorResultado.getInt("precio"));
+                producto.setPrecio(cursorResultado.getInt("precioventa"));
 
                 var categoria = new co.edu.uco.pathorder.entity.CategoriaEntity();
-                categoria.setId(UtilUUID.convertirAUUID(cursorResultado.getString("categoria")));
+                categoria.setId(UtilUUID.convertirAUUID(cursorResultado.getString("categoriaid")));
                 producto.setCategoria(categoria);
 
                 listaProductos.add(producto);
@@ -174,7 +204,7 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
         var producto = new ProductoEntity();
         var sentenciaSQL = new StringBuilder();
 
-        sentenciaSQL.append("SELECT id, nombre, tipo_producto, descripcion, precio, categoria FROM Producto WHERE id = ?");
+        sentenciaSQL.append("SELECT id, nombre, tipoproductoid, descripcion, precioventa, categoriaid FROM Producto WHERE id = ?");
 
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
             sentenciaPreparada.setObject(1, uuid);
@@ -185,14 +215,14 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
                     producto.setNombre(cursorResultado.getString("nombre"));
 
                     var tipoProducto = new co.edu.uco.pathorder.entity.TipoProductoEntity();
-                    tipoProducto.setId(UtilUUID.convertirAUUID(cursorResultado.getString("tipo_producto")));
+                    tipoProducto.setId(UtilUUID.convertirAUUID(cursorResultado.getString("tipoproductoid")));
                     producto.setTipoProducto(tipoProducto);
 
                     producto.setDescripcion(cursorResultado.getString("descripcion"));
-                    producto.setPrecio(cursorResultado.getInt("precio"));
+                    producto.setPrecio(cursorResultado.getInt("precioventa"));
 
                     var categoria = new co.edu.uco.pathorder.entity.CategoriaEntity();
-                    categoria.setId(UtilUUID.convertirAUUID(cursorResultado.getString("categoria")));
+                    categoria.setId(UtilUUID.convertirAUUID(cursorResultado.getString("categoriaid")));
                     producto.setCategoria(categoria);
                 }
             }
@@ -213,7 +243,7 @@ public class ProductoPostgreSQLDAO implements ProductoDao {
     public void update(UUID uuid, ProductoEntity entity) throws PathOrderException {
         var sentenciaSQL = new StringBuilder();
 
-        sentenciaSQL.append("UPDATE Producto SET nombre = ?, tipo_producto = ?, descripcion = ?, precio = ?, categoria = ? WHERE id = ?;");
+        sentenciaSQL.append("UPDATE Producto SET nombre = ?, tipoproductoid = ?, descripcion = ?, precioventa = ?, categoriaid = ? WHERE id = ?;");
 
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
             sentenciaPreparada.setString(1, entity.getNombre());

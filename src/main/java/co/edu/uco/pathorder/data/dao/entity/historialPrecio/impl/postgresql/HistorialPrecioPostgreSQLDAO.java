@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public class HistorialPrecioPostgreSQLDAO implements HistorialPrecioDao {
 
-    private Connection conexion;
+    private final Connection conexion;
 
     public HistorialPrecioPostgreSQLDAO(Connection conexion){
         this.conexion = conexion;

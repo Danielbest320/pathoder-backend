@@ -1,5 +1,6 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
+import co.edu.uco.pathorder.bussinesslogic.assembler.inventario.entity.InventarioEntityAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.InventarioBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.InventarioDomain;
 import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
@@ -19,19 +20,19 @@ public class InventarioBusinessLogicImpl implements InventarioBusinessLogic {
 
     @Override
     public void crearInventario(InventarioDomain inventario) throws PathOrderException {
-        InventarioEntity inventarioEntity = null;
+        InventarioEntity inventarioEntity = InventarioEntityAssembler.getInstance().toEntity(inventario);
         factory.getInventarioDAO().create(inventarioEntity);
     }
 
     @Override
     public void actualizarInventario(InventarioDomain inventario, UUID id) throws PathOrderException{
-        InventarioEntity inventarioEntity = null;
+        InventarioEntity inventarioEntity = InventarioEntityAssembler.getInstance().toEntity(inventario);
         factory.getInventarioDAO().update(id, inventarioEntity);
     }
 
     @Override
     public void actualizarInventarioMomentoReserva(InventarioDomain inventario, UUID id) throws PathOrderException {
-        InventarioEntity inventarioEntity = null;
+        InventarioEntity inventarioEntity = InventarioEntityAssembler.getInstance().toEntity(inventario);
         factory.getInventarioDAO().update(id, inventarioEntity);
     }
 
@@ -42,9 +43,9 @@ public class InventarioBusinessLogicImpl implements InventarioBusinessLogic {
 
     @Override
     public List<InventarioDomain> consultarInventario(InventarioDomain filtro) throws PathOrderException {
-        InventarioEntity inventarioFilter = null;
+        InventarioEntity inventarioFilter = InventarioEntityAssembler.getInstance().toEntity(filtro);
         List<InventarioEntity> inventarioEntities = factory.getInventarioDAO().listByFilter(inventarioFilter);
-        List<InventarioDomain> datosARetornar = null;
+        List<InventarioDomain> datosARetornar = InventarioEntityAssembler.getInstance().toDomains(inventarioEntities);
 
         return datosARetornar;
     }

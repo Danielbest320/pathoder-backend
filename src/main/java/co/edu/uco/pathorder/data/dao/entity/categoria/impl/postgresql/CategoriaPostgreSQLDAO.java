@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class CategoriaPostgreSQLDAO implements CategoriaDao {
 
-    private Connection conexion;
+    private final Connection conexion;
 
     public CategoriaPostgreSQLDAO(Connection conexion){
         this.conexion = conexion;

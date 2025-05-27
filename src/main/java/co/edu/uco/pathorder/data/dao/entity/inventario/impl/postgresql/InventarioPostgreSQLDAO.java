@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class InventarioPostgreSQLDAO implements InventarioDao {
 
-    private Connection conexion;
+    private final Connection conexion;
 
     public InventarioPostgreSQLDAO(Connection conexion){
         this.conexion = conexion;
