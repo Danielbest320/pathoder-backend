@@ -1,6 +1,6 @@
 package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 
-import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.dto.TipoNotificacionDTOAssembler;
+//import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.dto.TipoNotificacionDTOAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.TipoNotificacionBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.TipoNotificacionBusinessLogicImpl;
@@ -28,7 +28,7 @@ public class TipoNotificacionFacadeImpl implements TipoNotificacionFacade {
         try {
             daoFactory.iniciartransaccion();
 
-            TipoNotificacionDomain domain = TipoNotificacionDTOAssembler.getInstance().toDomain(tipoNotificacionDTO);
+            TipoNotificacionDomain domain = null;
             tipoNotificacionBusinessLogic.crearTiposNotificacion(domain);
 
             daoFactory.confirmartransaccion();
@@ -50,11 +50,11 @@ public class TipoNotificacionFacadeImpl implements TipoNotificacionFacade {
         try {
             daoFactory.iniciartransaccion();
 
-            TipoNotificacionDomain domainFilter = TipoNotificacionDTOAssembler.getInstance().toDomain(filtro);
+            TipoNotificacionDomain domainFilter = null;
             var resultado = tipoNotificacionBusinessLogic.consultarTiposNotificacion(domainFilter);
 
             daoFactory.confirmartransaccion();
-            return TipoNotificacionDTOAssembler.getInstance().toDTOs(resultado);
+            return null;
         } catch (PathOrderException e) {
             daoFactory.cancelartransaccion();
             throw e;

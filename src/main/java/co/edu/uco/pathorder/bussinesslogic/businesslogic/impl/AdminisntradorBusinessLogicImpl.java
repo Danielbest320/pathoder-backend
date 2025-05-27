@@ -5,6 +5,7 @@ import co.edu.uco.pathorder.bussinesslogic.businesslogic.AdministradorBusinessLo
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.AdministradorDomain;
 import co.edu.uco.pathorder.crosscutting.excepciones.BusinessLogicPathOrderException;
 import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilSeguridad;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
@@ -30,6 +31,9 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
 
         // Generar nuevo ID
         UUID nuevoId = UtilUUID.generarNuevoUUID();
+
+        String contrasenaEncriptada = UtilSeguridad.encriptar(administrador.getContrasena() );
+
         var adminConId = new AdministradorDomain(
                 nuevoId,
                 administrador.getDi(),
@@ -37,7 +41,7 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
                 administrador.getApellido(),
                 administrador.getCorreo(),
                 administrador.getTelefono(),
-                administrador.getContrasena(),
+                contrasenaEncriptada,
                 administrador.isConfirmacionCorreo(),
                 administrador.isConfirmacionTelefono(),
                 administrador.isEstadoCuenta(),

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 // DTO para errores de API
 class ApiError {
     private String mensaje;
+
     private String detalle;
 
     public ApiError(String mensaje, String detalle) {

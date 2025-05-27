@@ -1,6 +1,6 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
-import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.entity.TipoNotificacionEntityAssembler;
+//import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.entity.TipoNotificacionEntityAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.TipoNotificacionBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
 import co.edu.uco.pathorder.crosscutting.excepciones.BusinessLogicPathOrderException;
@@ -30,15 +30,15 @@ public class TipoNotificacionBusinessLogicImpl implements TipoNotificacionBusine
         var id = generarIdTipoNotificacion();
         tipoNotificacion.setId(id);
 
-        TipoNotificacionEntity tipoNotificacionEntity = TipoNotificacionEntityAssembler.getInstance().toEntity(tipoNotificacion);
+        TipoNotificacionEntity tipoNotificacionEntity = null;
         factory.getTipoNotificacionDAO().create(tipoNotificacionEntity);
     }
 
     @Override
     public List<TipoNotificacionDomain> consultarTiposNotificacion(TipoNotificacionDomain filtro) throws PathOrderException {
-        TipoNotificacionEntity tipoNotificacionEntity = TipoNotificacionEntityAssembler.getInstance().toEntity(filtro);
+        TipoNotificacionEntity tipoNotificacionEntity = null;
         List<TipoNotificacionEntity> tipoNotificacionEntities = factory.getTipoNotificacionDAO().listByFilter(tipoNotificacionEntity);
-        return TipoNotificacionEntityAssembler.getInstance().toDomains(tipoNotificacionEntities);
+        return null;
     }
 
     private void validarValorUnicoNombre(String nombre) throws  PathOrderException {
