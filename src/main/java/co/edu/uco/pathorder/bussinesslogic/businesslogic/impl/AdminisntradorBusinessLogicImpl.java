@@ -96,36 +96,75 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
     // ————— Validaciones de negocio —————
 
     private void validarIntegridadInformacionAdministrador(AdministradorDomain admin) throws PathOrderException {
+        //validaciones D1
         if (UtilTexto.getInstance().esVacio(admin.getDi())){
             throw BusinessLogicPathOrderException.reportar("El Di es obligatorio");
-
         }
+        if(!UtilTexto.getInstance().contieneSoloNumeros(admin.getDi())){
+            throw BusinessLogicPathOrderException.reportar("El Di solo debe contener números");
+        }
+        if(!UtilTexto.getInstance().longitudValida(admin.getDi(),1,12)){
+            throw BusinessLogicPathOrderException.reportar("El Di tiene que tener como minimo  1 y maximo 12 numeros");
+        }
+        //Validaciones nombre
         if (UtilTexto.getInstance().esVacio(admin.getNombre())) {
             throw BusinessLogicPathOrderException.reportar("El nombre es obligatorio");
         }
         if (!UtilTexto.getInstance().contieneSoloLetrasEspacios(admin.getNombre())) {
             throw BusinessLogicPathOrderException.reportar("El nombre solo debe contener letras y espacios");
         }
+        if (!UtilTexto.getInstance().longitudValida(admin.getNombre(),1,50)){
+            throw BusinessLogicPathOrderException.reportar("El nombre debe contener entre 1 y 50 caracteres");
+        }
+        //Validaciones apellido
         if (UtilTexto.getInstance().esVacio(admin.getApellido())) {
             throw BusinessLogicPathOrderException.reportar("El apellido es obligatorio");
         }
+        if(!UtilTexto.getInstance().contieneSoloLetrasEspacios(admin.getApellido())){
+            throw BusinessLogicPathOrderException.reportar("El apellido solo debe contener letras y espacios");
+        }
+        if (!UtilTexto.getInstance().longitudValida(admin.getApellido(),1,50)){
+            throw BusinessLogicPathOrderException.reportar("El apellido debe contener entre 1 y 50 caracteres");
+        }
+        //Validaciones Usuario
         if (UtilTexto.getInstance().esVacio(admin.getUsuario())) {
             throw BusinessLogicPathOrderException.reportar("El usuario es obligatorio");
         }
+        if(!UtilTexto.getInstance().contieneSoloLetrasEspacios(admin.getUsuario())){
+            throw BusinessLogicPathOrderException.reportar("El usuario solo debe contener letras y espacios");
+        }
+        if(!UtilTexto.getInstance().longitudValida(admin.getUsuario(),1,50)){
+            throw BusinessLogicPathOrderException.reportar("El usuario debe contener entre 1 y 50 caracteres");
+        }
+        //Validaciones correo
         if (UtilTexto.getInstance().esVacio(admin.getCorreo())) {
             throw BusinessLogicPathOrderException.reportar("El correo electrónico es obligatorio");
         }
         if (!UtilTexto.getInstance().esEmailValido(admin.getCorreo())) {
             throw BusinessLogicPathOrderException.reportar("El formato de correo electrónico no es válido");
         }
+        if(!UtilTexto.getInstance().longitudValida(admin.getCorreo(),1,200)){
+            throw BusinessLogicPathOrderException.reportar("El correo debe contener entre 1 y 200 caracteres");
+        }
+        //Validaciones telefono
         if (UtilTexto.getInstance().esVacio(admin.getTelefono())) {
             throw BusinessLogicPathOrderException.reportar("El telefono es obligatorio");
         }
+        if (!UtilTexto.getInstance().contieneSoloNumeros(admin.getTelefono())) {
+            throw BusinessLogicPathOrderException.reportar("El Telefono solo puede contener numeros");
+        }
+        if (!UtilTexto.getInstance().longitudValida(admin.getTelefono(),1,10)){
+            throw BusinessLogicPathOrderException.reportar("El teelfono solo puede contener entre 1 y 10 caracteres");
+        }
+        //Validaciones contrasena
         if (UtilTexto.getInstance().esVacio(admin.getContrasena())) {
-            throw BusinessLogicPathOrderException.reportar("El contrasena es obligatorio");
+            throw BusinessLogicPathOrderException.reportar("La contrasena es obligatorio");
         }
         if (!UtilTexto.getInstance().esContrasenaValida(admin.getContrasena())) {
-            throw BusinessLogicPathOrderException.reportar("El contrasena no es valida, debe contener minimo 8 caracteres, 1 mayuscula, un numero y un caracter especial");
+            throw BusinessLogicPathOrderException.reportar("La contrasena no es valida, debe contener minimo 8 caracteres, 1 mayuscula, un numero y un caracter especial");
+        }
+        if(!UtilTexto.getInstance().longitudValida(admin.getContrasena(),8,100)){
+            throw BusinessLogicPathOrderException.reportar("La contrasena solo puede contener maximo 100 caracteres ");
         }
 
     }
