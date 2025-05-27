@@ -2,6 +2,7 @@ package co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.dto;
 
 import co.edu.uco.pathorder.bussinesslogic.assembler.DTOAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.dto.TipoNotificacionDTO;
 
 import java.util.ArrayList;
@@ -24,26 +25,26 @@ public class TipoNotificacionDTOAssembler implements DTOAssembler<TipoNotificaci
 
     @Override
     public TipoNotificacionDomain toDomain(TipoNotificacionDTO dto) {
-//        return UtilObjeto.getInstance().esNulo(dto)
-//                ? TipoNotificacionDomain.obtenerValorDefecto()
-//                : new TipoNotificacionDomain(
-//                dto.getId(),
-//                dto.getNombre(),
-//                dto.getDescripcion()
-//        );
-        return null;
+        var tipoNotificacionDTO = TipoNotificacionDTO.obtenerValorDefecto(dto);
+
+        return  new TipoNotificacionDomain(
+                tipoNotificacionDTO.getId(),
+                tipoNotificacionDTO.getNombre(),
+                tipoNotificacionDTO.getMensaje(),
+                tipoNotificacionDTO.getDescripcion()
+        );
     }
 
     @Override
     public TipoNotificacionDTO toDTO(TipoNotificacionDomain domain) {
-//        return UtilObjeto.getInstance().esNulo(domain)
-//                ? TipoNotificacionDTO.obtenerValorDefecto()
-//                : new TipoNotificacionDTO(
-//                domain.getId(),
-//                domain.getNombre(),
-//                domain.getDescripcion()
-//        );
-        return null;
+        return UtilObjeto.getInstance().esNulo(domain)
+                ? TipoNotificacionDTO.obtenerValorDefecto()
+                : new TipoNotificacionDTO(
+                domain.getId(),
+                domain.getNombre(),
+                domain.getMensaje(),
+                domain.getDescripcion()
+        );
     }
 
     @Override

@@ -24,10 +24,10 @@ public class TipoNotificacionBusinessLogicImpl implements TipoNotificacionBusine
     @Override
     public void crearTiposNotificacion(TipoNotificacionDomain tipoNotificacion) throws PathOrderException {
         validarIntegridadInformacionTipoNotificacion(tipoNotificacion);
-
         validarValorUnicoNombre(tipoNotificacion.getNombre());
 
         var id = generarIdTipoNotificacion();
+
         tipoNotificacion.setId(id);
 
         TipoNotificacionEntity tipoNotificacionEntity = TipoNotificacionEntityAssembler.getInstance().toEntity(tipoNotificacion);
@@ -57,9 +57,9 @@ public class TipoNotificacionBusinessLogicImpl implements TipoNotificacionBusine
         boolean existeId;
         do {
             id = UtilUUID.generarNuevoUUID();
-            var tipoNotificacion = factory.getTipoNotificacionDAO().listById(id);
-            existeId = !UtilUUID.esValorDefecto(tipoNotificacion.getId());
-        } while (existeId);
+            //var tipoNotificacion = factory.getTipoNotificacionDAO().listById(id); tipoNotificacion.getId()
+            existeId = !UtilUUID.esValorDefecto(id);
+        } while (!existeId);
 
         return id;
     }
@@ -90,9 +90,9 @@ public class TipoNotificacionBusinessLogicImpl implements TipoNotificacionBusine
         if (!(!mensaje.isEmpty() && mensaje.length() <= 100)) {
             throw BusinessLogicPathOrderException.reportar("El mensaje del tipo de notificación no puede exceder los 100 caracteres");
         }
-        if (UtilTexto.getInstance().contieneSoloLetrasEspacios(mensaje)) {
-            throw BusinessLogicPathOrderException.reportar("El mensaje del tipo de notificación solo debe contener letras y espacios");
-        }
+//        if (UtilTexto.getInstance().contieneSoloLetrasEspacios(mensaje)) {
+//            throw BusinessLogicPathOrderException.reportar("El mensaje del tipo de notificación solo debe contener letras y espacios");
+//        }
     }
 
     private void validarDescripcion(String descripcion) throws PathOrderException {

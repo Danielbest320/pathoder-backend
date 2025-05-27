@@ -68,9 +68,9 @@ public class DetalleFacturaBusinessLogicImpl implements DetalleFacturaBusinessLo
         var existeId = false;
         do {
             id = UtilUUID.generarNuevoUUID();
-            var detalleFactura = factory.getDetalleFacturaDAO().listById(id);
-            existeId = !UtilUUID.esValorDefecto(detalleFactura.getId());
-        } while (existeId);
+            //var detalleFactura = factory.getDetalleFacturaDAO().listById(id); detalleFactura.getId()
+            existeId = !UtilUUID.esValorDefecto(id);
+        } while (!existeId);
 
         return id;
     }

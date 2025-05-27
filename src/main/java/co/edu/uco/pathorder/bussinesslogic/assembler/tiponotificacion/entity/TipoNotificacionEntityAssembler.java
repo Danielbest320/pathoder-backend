@@ -21,26 +21,29 @@ public class TipoNotificacionEntityAssembler implements EntityAssembler<TipoNoti
 
     @Override
     public TipoNotificacionEntity toEntity(TipoNotificacionDomain domain) {
-//        return UtilObjeto.getInstance().esNulo(domain)
-//                ? TipoNotificacionEntity.obtenerValorDefecto()
-//                : new TipoNotificacionEntity(
-//                domain.getId(),
-//                domain.getNombre(),
-//                domain.getDescripcion()
-//        );
-        return null;
+        return UtilObjeto.getInstance().esNulo(domain)
+                ? TipoNotificacionEntity.obtenerValorDefecto()
+                : new TipoNotificacionEntity(
+                domain.getId(),
+                domain.getNombre(),
+                domain.getMensaje(),
+                domain.getDescripcion()
+        );
+
     }
 
     @Override
     public TipoNotificacionDomain toDomain(TipoNotificacionEntity entity) {
-//        return UtilObjeto.getInstance().esNulo(entity)
-//                ? TipoNotificacionDomain.obtenerValorDefecto()
-//                : new TipoNotificacionDomain(
-//                entity.getId(),
-//                entity.getNombre(),
-//                entity.getDescripcion()
-//        );
-        return null;
+
+        var tipoNotificacionEntity = TipoNotificacionEntity.obtenerValorDefecto(entity);
+
+        return  new TipoNotificacionDomain(
+                tipoNotificacionEntity.getId(),
+                tipoNotificacionEntity.getNombre(),
+                tipoNotificacionEntity.getMensaje(),
+                tipoNotificacionEntity.getDescripcion()
+        );
+
     }
 
     @Override
