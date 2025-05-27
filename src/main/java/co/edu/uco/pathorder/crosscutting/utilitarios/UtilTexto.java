@@ -14,6 +14,8 @@ public final class UtilTexto {
     private static final Pattern PATRON_CONTRASENA = Pattern.compile(
             "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$"
     );
+    private static final String PATRON_SOLO_NUMEROS = "^[0-9]+$";
+
 
     private UtilTexto (){
 
@@ -26,6 +28,10 @@ public final class UtilTexto {
     public boolean patronEsValido(final String valor, final String patron) {
         return obtenerValorDefecto(valor).matches(obtenerValorDefecto(patron));
     }
+    public boolean contieneSoloNumeros(final String valor) {
+        return patronEsValido(quitarEspacioBlancoInicioFin(valor), PATRON_SOLO_NUMEROS);
+    }
+
 
     public boolean contieneSoloLetrasEspacios(final String valor) {
         return patronEsValido(quitarEspacioBlancoInicioFin(valor), PATRON_SOLO_LETRAS_ESPACIOS);
