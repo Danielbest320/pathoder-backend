@@ -15,10 +15,10 @@ class ApiError {
 
     public ApiError(String mensaje, String detalle) {
         this.mensaje = mensaje;
-        this.detalle = detalle;
+        //this.detalle = detalle;
     }
     public String getMensaje() { return mensaje; }
-    public String getDetalle() { return detalle; }
+    //public String getDetalle() { return detalle; }
 }
 
 @ControllerAdvice
