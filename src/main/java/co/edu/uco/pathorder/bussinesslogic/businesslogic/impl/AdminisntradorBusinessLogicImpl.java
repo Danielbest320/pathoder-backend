@@ -1,8 +1,8 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
+import co.edu.uco.pathorder.bussinesslogic.assembler.administrador.entity.AdministradorEntityAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.AdministradorBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.AdministradorDomain;
-import co.edu.uco.pathorder.bussinesslogic.mapper.AdministradorMapper;
 import co.edu.uco.pathorder.crosscutting.excepciones.BusinessLogicPathOrderException;
 import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
@@ -26,7 +26,7 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
     @Override
     public void registrarAdministrador(AdministradorDomain administrador) throws PathOrderException {
         validarIntegridadInformacionAdministrador(administrador);
-        validarNoExistaUsuarioOEmail(administrador);
+        validarNoExistanDatosDuplicados(administrador);
 
         // Generar nuevo ID
         UUID nuevoId = UtilUUID.generarNuevoUUID();
@@ -45,13 +45,13 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
         );
 
         // Mapear y crear
-        AdministradorEntity entity = AdministradorMapper.toEntity(adminConId);
+        var entity = AdministradorEntityAssembler.getInstance().toEntity(adminConId);
         factory.getAdministradorDAO().create(entity);
     }
 
     @Override
     public void actualizarInformacionAdministrador(UUID id, AdministradorDomain administrador) throws PathOrderException {
-        AdministradorEntity administradorEntity = AdministradorMapper.toEntity(administrador);
+        var administradorEntity = AdministradorEntityAssembler.getInstance().toEntity(administrador);
         factory.getAdministradorDAO().update(id,administradorEntity);
 
     }
@@ -68,23 +68,32 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
         if (entity == null) {
             throw BusinessLogicPathOrderException.reportar("No existe administrador con ID " + id);
         }
-        return AdministradorMapper.toDomain(entity);
+        return AdministradorEntityAssembler.getInstance().toDomain(entity);
     }
 
     @Override
     public List<AdministradorDomain> consultarAdministradores(AdministradorDomain filtro) throws PathOrderException {
-        AdministradorEntity administradorFilter = AdministradorMapper.toEntity(filtro);
-        List<AdministradorEntity> AdministradorEntities = factory.getAdministradorDAO().listByFilter(administradorFilter);
-        List<AdministradorDomain> datosARetornar = AdministradorMapper.toDomainList(AdministradorEntities);
+        var tieneFiltros = filtro != null && (
+                !UtilUUID.esValorDefecto(filtro.getId()) ||
+                        !UtilTexto.getInstance().esValorDefecto(filtro.getDi()) ||
+                        !UtilTexto.getInstance().esValorDefecto(filtro.getCorreo()) ||
+                        !UtilTexto.getInstance().esValorDefecto(filtro.getUsuario()) ||
+                        !UtilTexto.getInstance().esValorDefecto(filtro.getTelefono())
+        );
 
-        return datosARetornar;
+        var administradorEntities = tieneFiltros
+                ? factory.getAdministradorDAO().listByFilter(AdministradorEntityAssembler.getInstance().toEntity(filtro))
+                : factory.getAdministradorDAO().listAll();
+
+        return AdministradorEntityAssembler.getInstance().toDomains(administradorEntities);
     }
+
 
     // ————— Validaciones de negocio —————
 
     private void validarIntegridadInformacionAdministrador(AdministradorDomain admin) throws PathOrderException {
         if (UtilTexto.getInstance().esVacio(admin.getDi())){
-            throw BusinessLogicPathOrderException.reportar("El ID es obligatorio");
+            throw BusinessLogicPathOrderException.reportar("El Di es obligatorio");
 
         }
         if (UtilTexto.getInstance().esVacio(admin.getNombre())) {
@@ -117,20 +126,26 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
 
     }
 
-    private void validarNoExistaUsuarioOEmail(AdministradorDomain admin) throws PathOrderException {
-        AdministradorEntity filtro = AdministradorMapper.toEntity(admin);
-        List<AdministradorEntity> encontrados = factory.getAdministradorDAO().listByFilter(filtro);
+    private void validarNoExistanDatosDuplicados(AdministradorDomain admin) throws PathOrderException {
+        var filtro = AdministradorEntityAssembler.getInstance().toEntity(admin);
+        var encontrados = factory.getAdministradorDAO().listByFilter(filtro);
 
-        boolean duplicado = encontrados.stream().anyMatch(e ->
-                e.getUsuario().equalsIgnoreCase(admin.getUsuario()) ||
-                        e.getCorreo().equalsIgnoreCase(admin.getCorreo())
-        );
-        if (duplicado) {
-            throw BusinessLogicPathOrderException.reportar(
-                    "Ya existe un administrador con el mismo usuario o correo electrónico"
-            );
+        for (AdministradorEntity existente : encontrados) {
+            if (existente.getUsuario().equalsIgnoreCase(admin.getUsuario())) {
+                throw BusinessLogicPathOrderException.reportar("Ya existe un administrador con el mismo usuario.");
+            }
+            if (existente.getCorreo().equalsIgnoreCase(admin.getCorreo())) {
+                throw BusinessLogicPathOrderException.reportar("Ya existe un administrador con el mismo correo electrónico.");
+            }
+            if (existente.getDi().equalsIgnoreCase(admin.getDi())) {
+                throw BusinessLogicPathOrderException.reportar("Ya existe un administrador con el mismo número de identificación (DI).");
+            }
+            if (existente.getTelefono().equalsIgnoreCase(admin.getTelefono())) {
+                throw BusinessLogicPathOrderException.reportar("Ya existe un administrador con el mismo número de teléfono.");
+            }
         }
     }
+
 
 
 

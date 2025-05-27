@@ -12,7 +12,7 @@ public final class UtilTexto {
     );
 
     private static final Pattern PATRON_CONTRASENA = Pattern.compile(
-            "^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[^A-Za-z0-9]).{8,}$"
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$"
     );
 
     private UtilTexto (){

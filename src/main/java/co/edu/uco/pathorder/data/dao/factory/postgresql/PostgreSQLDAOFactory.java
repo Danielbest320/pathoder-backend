@@ -59,31 +59,27 @@ public class PostgreSQLDAOFactory extends DAOFactory {
 
     @Override
     public void abrirConexion() throws PathOrderException {
-        var baseDatos = "pathorder_db";
-        //var servidor = "localhost:5432";
-
         final String url = "jdbc:postgresql://ep-square-butterfly-a8qzh9rh-pooler.eastus2.azure.neon.tech:5432/pathorder_db?sslmode=require";
         final String usuario = "pathorder_db_owner";
         final String contrasena = "npg_n0LwiyVuk1dq";
 
+        var baseDatos = "pathorder_db";
+        var servidor = "localhost:5432";
+
         try {
-            conexion=DriverManager.getConnection(url, usuario, contrasena);
+            conexion=DriverManager.getConnection(url,usuario,contrasena);
             connexionEstaAbierta = true;
 
         } catch (SQLException exception) {
             var mensajeTecnico = "Se presentó una SQLException tratando de obtener la conexión con la base de datos "
-                    + baseDatos + " en el servidor " + url + ", para más detalles revise el log de errores";
+                    + baseDatos + " en el servidor " + servidor + ", para más detalles revise el log de errores";
             var mensajeUsuario = "Se ha presentado un problema tratando de obtener la conexión con la fuente de datos";
 
             throw DataPathOrderException.reportar(mensajeUsuario, mensajeTecnico, exception);
 
         } catch (Exception exception) {
             var mensajeTecnico = "Se presentó una excepción NO CONTROLADA tratando de obtener la conexión con la base de datos "
-                    + baseDatos + " en el servidor " + url
-
-
-
- + ", para más detalles revise el log de errores";
+                    + baseDatos + " en el servidor " + servidor + ", para más detalles revise el log de errores";
             var mensajeUsuario = "Se ha presentado un problema inesperado tratando de obtener la conexión con la fuente de datos";
 
             throw DataPathOrderException.reportar(mensajeUsuario, mensajeTecnico, exception);

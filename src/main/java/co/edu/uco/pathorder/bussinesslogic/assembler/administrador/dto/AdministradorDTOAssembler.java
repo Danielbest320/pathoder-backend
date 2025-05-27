@@ -84,16 +84,14 @@ public class AdministradorDTOAssembler implements DTOAssembler<AdministradorDTO,
 
     @Override
     public List<AdministradorDomain> toDomains(List<AdministradorDTO> dtos) {
-        if (dtos == null || dtos.isEmpty()) {
-            return List.of();
+        var listaResultado = new ArrayList<AdministradorDomain>();
+        if (UtilObjeto.getInstance().esNulo(dtos)) {
+            return listaResultado;
         }
-        List<AdministradorDomain> domains = new ArrayList<>();
         for (AdministradorDTO dtoItem : dtos) {
-            AdministradorDomain domain = toDomain(dtoItem);
-            if (domain != null) {
-                domains.add(domain);
-            }
+            listaResultado.add(toDomain(dtoItem));
+
         }
-        return domains;
+        return listaResultado;
     }
 }

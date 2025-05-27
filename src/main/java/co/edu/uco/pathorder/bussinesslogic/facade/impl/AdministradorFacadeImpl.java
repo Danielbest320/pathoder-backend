@@ -1,7 +1,7 @@
 package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 
 
-import co.edu.uco.pathorder.bussinesslogic.assembler.AdministradorAssembler;
+import co.edu.uco.pathorder.bussinesslogic.assembler.administrador.dto.AdministradorDTOAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.AdministradorBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.AdministradorDomain;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.impl.AdminisntradorBusinessLogicImpl;
@@ -11,10 +11,12 @@ import co.edu.uco.pathorder.crosscutting.excepciones.PathOrderException;
 import co.edu.uco.pathorder.data.dao.factory.DAOFactory;
 import co.edu.uco.pathorder.data.dao.factory.Factory;
 import co.edu.uco.pathorder.dto.AdministradorDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class AdministradorFacadeImpl implements AdministradorFacade {
 
     private final DAOFactory daoFactory;
@@ -31,7 +33,7 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
         try {
             daoFactory.iniciartransaccion();
 
-            AdministradorDomain domain = AdministradorAssembler.toDomain(administrador);
+            AdministradorDomain domain = AdministradorDTOAssembler.getInstance().toDomain(administrador);
             administradorBusinessLogic.registrarAdministrador(domain);
 
             daoFactory.confirmartransaccion();
@@ -55,7 +57,7 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
         try {
             daoFactory.iniciartransaccion();
 
-            AdministradorDomain domain = AdministradorAssembler.toDomain(administrador);
+            AdministradorDomain domain = AdministradorDTOAssembler.getInstance().toDomain(administrador);
             administradorBusinessLogic.actualizarInformacionAdministrador(id, domain);
 
             daoFactory.confirmartransaccion();
@@ -101,7 +103,7 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
         daoFactory.abrirConexion();
         try {
             var AdministradorDomainResultado  = administradorBusinessLogic.consultarAdministradorPorId(id);
-            return AdministradorAssembler.toDTO(AdministradorDomainResultado);
+            return AdministradorDTOAssembler.getInstance().toDTO(AdministradorDomainResultado);
         } catch (PathOrderException e) {
             throw e;
         } catch (Exception e) {
@@ -118,9 +120,9 @@ public class AdministradorFacadeImpl implements AdministradorFacade {
     public List<AdministradorDTO> consultarAdministradores(AdministradorDTO filtro) throws PathOrderException {
         daoFactory.abrirConexion();
         try {
-            AdministradorDomain domainFilter = AdministradorAssembler.toDomain(filtro);
+            AdministradorDomain domainFilter = AdministradorDTOAssembler.getInstance().toDomain(filtro);
             var AdministradordomainResultado = administradorBusinessLogic.consultarAdministradores(domainFilter);
-            return AdministradorAssembler.toDTOList(AdministradordomainResultado);
+            return AdministradorDTOAssembler.getInstance().toDTOs(AdministradordomainResultado);
         } catch (PathOrderException e) {
             throw e;
         } catch (Exception e) {

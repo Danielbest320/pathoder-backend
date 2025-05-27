@@ -25,7 +25,7 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
         var sentenciaSQL = new StringBuilder();
 
         sentenciaSQL.append( "INSERT INTO Administrador(id, di, nombre, apellido, correo, telefono, contrasena, "
-                + "confirmacion_correo, confirmacion_telefono, estado_cuenta, usuario) "
+                + "confirmacioncorreo, confirmaciontelefono, estadocuenta, usuario) "
                 + "VALUES(?,?,?,?,?,?,?,?,?,?,?);");
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
             sentenciaPreparada.setObject(1, entity.getId());
@@ -74,24 +74,33 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
         var listaAdministradores = new ArrayList<AdministradorEntity>();
         var sentenciaSQL = new StringBuilder();
         sentenciaSQL.append("SELECT id, di, nombre, apellido, correo, telefono, contrasena, ")
-                .append("confirmacion_correo, confirmacion_telefono, estado_cuenta, usuario ")
-                .append("FROM Administrador WHERE 1=1");
-        var filtrarId = entity != null && entity.getId() != null;
-        var filtrarUsuario = entity != null && entity.getUsuario() != null && !entity.getUsuario().isBlank();
-        if (filtrarId) {
-            sentenciaSQL.append(" AND id = ?");
+                .append("confirmacioncorreo, confirmaciontelefono, estadocuenta, usuario ")
+                .append("FROM Administrador WHERE 1=0");
+
+        var filtros = new ArrayList<Object>();
+
+        if (entity.getUsuario() != null && !entity.getUsuario().isBlank()) {
+            sentenciaSQL.append(" OR LOWER(usuario) = LOWER(?)");
+            filtros.add(entity.getUsuario().trim());
         }
-        if (filtrarUsuario) {
-            sentenciaSQL.append(" AND LOWER(usuario) LIKE LOWER(?)");
+        if (entity.getCorreo() != null && !entity.getCorreo().isBlank()) {
+            sentenciaSQL.append(" OR LOWER(correo) = LOWER(?)");
+            filtros.add(entity.getCorreo().trim());
         }
+        if (entity.getDi() != null && !entity.getDi().isBlank()) {
+            sentenciaSQL.append(" OR di = ?");
+            filtros.add(entity.getDi().trim());
+        }
+        if (entity.getTelefono() != null && !entity.getTelefono().isBlank()) {
+            sentenciaSQL.append(" OR telefono = ?");
+            filtros.add(entity.getTelefono().trim());
+        }
+
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
-            var parametroIndex = 1;
-            if (filtrarId) {
-                sentenciaPreparada.setObject(parametroIndex++, entity.getId());
+            for (int i = 0; i < filtros.size(); i++) {
+                sentenciaPreparada.setObject(i + 1, filtros.get(i));
             }
-            if (filtrarUsuario) {
-                sentenciaPreparada.setObject(parametroIndex++, "%" + entity.getUsuario().trim() + "%");
-            }
+
             try (var cursorResultado = sentenciaPreparada.executeQuery()) {
                 while (cursorResultado.next()) {
                     var admin = new AdministradorEntity();
@@ -102,9 +111,9 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
                     admin.setCorreo(cursorResultado.getString("correo"));
                     admin.setTelefono(cursorResultado.getString("telefono"));
                     admin.setContrasena(cursorResultado.getString("contrasena"));
-                    admin.setConfirmacionCorreo(cursorResultado.getBoolean("confirmacion_correo"));
-                    admin.setConfirmacionTelefono(cursorResultado.getBoolean("confirmacion_telefono"));
-                    admin.setEstadoCuenta(cursorResultado.getBoolean("estado_cuenta"));
+                    admin.setConfirmacionCorreo(cursorResultado.getBoolean("confirmacioncorreo"));
+                    admin.setConfirmacionTelefono(cursorResultado.getBoolean("confirmaciontelefono"));
+                    admin.setEstadoCuenta(cursorResultado.getBoolean("estadocuenta"));
                     admin.setUsuario(cursorResultado.getString("usuario"));
                     listaAdministradores.add(admin);
                 }
@@ -121,12 +130,13 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
         return listaAdministradores;
     }
 
+
     @Override
     public List<AdministradorEntity> listAll() throws PathOrderException {
         var listaAdministradores = new ArrayList<AdministradorEntity>();
         var sentenciaSQL = new StringBuilder();
          sentenciaSQL.append("SELECT id, di, nombre, apellido, correo, telefono, contrasena, "
-                + "confirmacion_correo, confirmacion_telefono, estado_cuenta, usuario "
+                + "confirmacioncorreo, confirmaciontelefono, estadocuenta, usuario "
                 + "FROM Administrador;");
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString());
              var cursorResultado = sentenciaPreparada.executeQuery()) {
@@ -139,9 +149,9 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
                 admin.setCorreo(cursorResultado.getString("correo"));
                 admin.setTelefono(cursorResultado.getString("telefono"));
                 admin.setContrasena(cursorResultado.getString("contrasena"));
-                admin.setConfirmacionCorreo(cursorResultado.getBoolean("confirmacion_correo"));
-                admin.setConfirmacionTelefono(cursorResultado.getBoolean("confirmacion_telefono"));
-                admin.setEstadoCuenta(cursorResultado.getBoolean("estado_cuenta"));
+                admin.setConfirmacionCorreo(cursorResultado.getBoolean("confirmacioncorreo"));
+                admin.setConfirmacionTelefono(cursorResultado.getBoolean("confirmaciontelefono"));
+                admin.setEstadoCuenta(cursorResultado.getBoolean("estadocuenta"));
                 admin.setUsuario(cursorResultado.getString("usuario"));
                 listaAdministradores.add(admin);
             }
@@ -162,7 +172,7 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
         var administradorEntityRetorno = new AdministradorEntity();
         var sentenciaSQL =new StringBuilder();
          sentenciaSQL.append("SELECT id, di, nombre, apellido, correo, telefono, contrasena, "
-                + "confirmacion_correo, confirmacion_telefono, estado_cuenta, usuario "
+                + "confirmacioncorreo, confirmaciontelefono, estadocuenta, usuario "
                 + "FROM Administrador WHERE id = ?;");
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
             sentenciaPreparada.setObject(1, uuid);
@@ -176,9 +186,9 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
                     administradorEntityRetorno.setCorreo(cursorResultado.getString("correo"));
                     administradorEntityRetorno.setTelefono(cursorResultado.getString("telefono"));
                     administradorEntityRetorno.setContrasena(cursorResultado.getString("contrasena"));
-                    administradorEntityRetorno.setConfirmacionCorreo(cursorResultado.getBoolean("confirmacion_correo"));
-                    administradorEntityRetorno.setConfirmacionTelefono(cursorResultado.getBoolean("confirmacion_telefono"));
-                    administradorEntityRetorno.setEstadoCuenta(cursorResultado.getBoolean("estado_cuenta"));
+                    administradorEntityRetorno.setConfirmacionCorreo(cursorResultado.getBoolean("confirmacioncorreo"));
+                    administradorEntityRetorno.setConfirmacionTelefono(cursorResultado.getBoolean("confirmaciontelefono"));
+                    administradorEntityRetorno.setEstadoCuenta(cursorResultado.getBoolean("estadocuenta"));
                     administradorEntityRetorno.setUsuario(cursorResultado.getString("usuario"));
 
                 }
@@ -200,7 +210,7 @@ public class AdministradorPostgreSQLDAO implements AdministradorDao {
         var sentenciaSQL =new StringBuilder();
 
         sentenciaSQL.append("UPDATE Administrador SET di = ?, nombre = ?, apellido = ?, correo = ?, telefono = ?, "
-                + "contrasena = ?, confirmacion_correo = ?, confirmacion_telefono = ?, estado_cuenta = ?, usuario = ? "
+                + "contrasena = ?, confirmacioncorreo = ?, confirmaciontelefono = ?, estadocuenta = ?, usuario = ? "
                 + "WHERE id = ?;");
         try (var sentenciaPreparada = conexion.prepareStatement(sentenciaSQL.toString())) {
             sentenciaPreparada.setObject(1, entity.getDi());
