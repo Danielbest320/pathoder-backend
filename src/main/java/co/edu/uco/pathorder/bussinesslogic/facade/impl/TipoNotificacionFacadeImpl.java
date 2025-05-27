@@ -1,6 +1,5 @@
 package co.edu.uco.pathorder.bussinesslogic.facade.impl;
 
-//import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.dto.TipoNotificacionDTOAssembler;
 import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.dto.TipoNotificacionDTOAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.TipoNotificacionBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//@Service
+@Service
 public class TipoNotificacionFacadeImpl implements TipoNotificacionFacade {
 
     private final DAOFactory daoFactory;
@@ -58,7 +57,7 @@ public class TipoNotificacionFacadeImpl implements TipoNotificacionFacade {
             var resultado = tipoNotificacionBusinessLogic.consultarTiposNotificacion(domainFilter);
 
             daoFactory.confirmartransaccion();
-            return null;
+            return TipoNotificacionDTOAssembler.getINSTANCE().toDTOs(resultado);
         } catch (PathOrderException e) {
             daoFactory.cancelartransaccion();
             throw e;

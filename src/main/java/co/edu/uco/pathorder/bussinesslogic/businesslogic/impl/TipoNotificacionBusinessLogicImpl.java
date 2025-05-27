@@ -1,6 +1,5 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.impl;
 
-//import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.entity.TipoNotificacionEntityAssembler;
 import co.edu.uco.pathorder.bussinesslogic.assembler.tiponotificacion.entity.TipoNotificacionEntityAssembler;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.TipoNotificacionBusinessLogic;
 import co.edu.uco.pathorder.bussinesslogic.businesslogic.domain.TipoNotificacionDomain;
@@ -39,7 +38,7 @@ public class TipoNotificacionBusinessLogicImpl implements TipoNotificacionBusine
     public List<TipoNotificacionDomain> consultarTiposNotificacion(TipoNotificacionDomain filtro) throws PathOrderException {
         TipoNotificacionEntity tipoNotificacionEntity = TipoNotificacionEntityAssembler.getInstance().toEntity(filtro);
         List<TipoNotificacionEntity> tipoNotificacionEntities = factory.getTipoNotificacionDAO().listByFilter(tipoNotificacionEntity);
-        return null;
+        return TipoNotificacionEntityAssembler.getInstance().toDomains(tipoNotificacionEntities);
     }
 
     private void validarValorUnicoNombre(String nombre) throws  PathOrderException {
@@ -91,9 +90,7 @@ public class TipoNotificacionBusinessLogicImpl implements TipoNotificacionBusine
         if (!(!mensaje.isEmpty() && mensaje.length() <= 100)) {
             throw BusinessLogicPathOrderException.reportar("El mensaje del tipo de notificación no puede exceder los 100 caracteres");
         }
-//        if (UtilTexto.getInstance().contieneSoloLetrasEspacios(mensaje)) {
-//            throw BusinessLogicPathOrderException.reportar("El mensaje del tipo de notificación solo debe contener letras y espacios");
-//        }
+       if (UtilTexto.getInstance().contieneSoloLetrasEspacios(mensaje)) {throw BusinessLogicPathOrderException.reportar("El mensaje del tipo de notificación solo debe contener letras y espacios");        }
     }
 
     private void validarDescripcion(String descripcion) throws PathOrderException {
