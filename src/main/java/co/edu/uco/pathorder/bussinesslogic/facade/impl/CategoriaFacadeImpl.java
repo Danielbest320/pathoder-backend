@@ -30,6 +30,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 
     @Override
     public void crearNuevaCategoria(CategoriaDTO categoria) throws PathOrderException{
+        daoFactory.abrirConexion();
         try {
             daoFactory.iniciartransaccion();
 
@@ -53,6 +54,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 
     @Override
     public void modificarCategoriaExistente(UUID id, CategoriaDTO categoria)throws PathOrderException {
+        daoFactory.abrirConexion();
         try {
             daoFactory.iniciartransaccion();
 
@@ -77,6 +79,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 
     @Override
     public void eliminarUnaCategoria(UUID id) throws PathOrderException{
+        daoFactory.abrirConexion();
         try {
             daoFactory.iniciartransaccion();
 
@@ -101,6 +104,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 
     @Override
     public List<CategoriaDTO> consultarCategoriaDisponibles(CategoriaDTO filtro) throws PathOrderException {
+        daoFactory.abrirConexion();
         try {
             //Para administrador
             daoFactory.iniciartransaccion();
@@ -126,6 +130,7 @@ public class CategoriaFacadeImpl implements CategoriaFacade {
 
     @Override
     public List<CategoriaDTO> consultarCategoriaExistentes(CategoriaDTO filtro) throws PathOrderException {
+        daoFactory.abrirConexion();
         try {
             //Para cliente
             var filtroDomain = CategoriaDTOAssembler.getInstance().toDomain(filtro);

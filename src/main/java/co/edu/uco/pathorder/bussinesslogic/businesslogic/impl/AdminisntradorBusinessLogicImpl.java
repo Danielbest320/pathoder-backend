@@ -166,7 +166,6 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
         if(!UtilTexto.getInstance().longitudValida(admin.getContrasena(),8,100)){
             throw BusinessLogicPathOrderException.reportar("La contrasena solo puede contener maximo 100 caracteres ");
         }
-
     }
 
     private void validarNoExistanDatosDuplicados(AdministradorDomain admin) throws PathOrderException {

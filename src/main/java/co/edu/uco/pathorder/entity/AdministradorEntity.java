@@ -1,5 +1,6 @@
 package co.edu.uco.pathorder.entity;
 
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilBooleano;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 
@@ -12,6 +13,9 @@ public final class AdministradorEntity extends UsuarioEntity {
     public AdministradorEntity() {
         super();
         setUsuario(UtilTexto.getInstance().obtenerValorDefecto());
+        setConfirmacionCorreo(UtilBooleano.getInstance().obtenerValorDefecto());
+        setConfirmacionTelefono(UtilBooleano.getInstance().obtenerValorDefecto());
+        setEstadoCuenta(UtilBooleano.getInstance().obtenerValorDefecto());
     }
 
     public AdministradorEntity(final UUID id) {

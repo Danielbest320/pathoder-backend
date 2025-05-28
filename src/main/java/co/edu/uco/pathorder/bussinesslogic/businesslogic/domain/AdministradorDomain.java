@@ -1,5 +1,6 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilBooleano;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 
@@ -12,6 +13,10 @@ public  class AdministradorDomain extends UsuarioDomain {
     AdministradorDomain() {
         super();
         setUsuario(UtilTexto.getInstance().obtenerValorDefecto());
+        setConfirmacionCorreo(UtilBooleano.getInstance().obtenerValorDefecto());
+        setConfirmacionTelefono(UtilBooleano.getInstance().obtenerValorDefecto());
+        setEstadoCuenta(UtilBooleano.getInstance().obtenerValorDefecto());
+
     }
 
     public AdministradorDomain(final UUID id) {

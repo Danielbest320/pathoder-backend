@@ -1,5 +1,6 @@
 package co.edu.uco.pathorder.dto;
 
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilBooleano;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 
@@ -12,6 +13,9 @@ public class AdministradorDTO extends UsuarioDTO {
     public AdministradorDTO() {
         super();
         setUsuario(UtilTexto.getInstance().obtenerValorDefecto());
+        setConfirmacionCorreo(UtilBooleano.getInstance().obtenerValorDefecto());
+        setConfirmacionCorreo(UtilBooleano.getInstance().obtenerValorDefecto());
+        setEstadoCuenta(UtilBooleano.getInstance().obtenerValorDefecto());
     }
 
     public AdministradorDTO(final UUID id) {

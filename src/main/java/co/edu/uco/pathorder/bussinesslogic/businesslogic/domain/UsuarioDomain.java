@@ -1,5 +1,6 @@
 package co.edu.uco.pathorder.bussinesslogic.businesslogic.domain;
 
+import co.edu.uco.pathorder.crosscutting.utilitarios.UtilBooleano;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilObjeto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilTexto;
 import co.edu.uco.pathorder.crosscutting.utilitarios.UtilUUID;
@@ -27,10 +28,11 @@ public class UsuarioDomain {
         setCorreo(UtilTexto.getInstance().obtenerValorDefecto());
         setTelefono(UtilTexto.getInstance().obtenerValorDefecto());
         setContrasena(UtilTexto.getInstance().obtenerValorDefecto());
-        setConfirmacionCorreo(false);
-        setConfirmacionTelefono(false);
-        setEstadoCuenta(false);
+        setConfirmacionCorreo(UtilBooleano.getInstance().obtenerValorDefecto());
+        setConfirmacionTelefono(UtilBooleano.getInstance().obtenerValorDefecto());
+        setEstadoCuenta(UtilBooleano.getInstance().obtenerValorDefecto());
     }
+
 
     public UsuarioDomain(final UUID id) {
         setId(id);
@@ -40,9 +42,9 @@ public class UsuarioDomain {
         setCorreo(UtilTexto.getInstance().obtenerValorDefecto());
         setTelefono(UtilTexto.getInstance().obtenerValorDefecto());
         setContrasena(UtilTexto.getInstance().obtenerValorDefecto());
-        setConfirmacionCorreo(false);
-        setConfirmacionTelefono(false);
-        setEstadoCuenta(false);
+        setConfirmacionCorreo(UtilBooleano.getInstance().obtenerValorDefecto());
+        setConfirmacionTelefono(UtilBooleano.getInstance().obtenerValorDefecto());
+        setEstadoCuenta(UtilBooleano.getInstance().obtenerValorDefecto());
     }
 
     public UsuarioDomain(final UUID id, final String di, final String nombre, final String apellido,
@@ -129,7 +131,7 @@ public class UsuarioDomain {
         return confirmacionCorreo;
     }
 
-    private void setConfirmacionCorreo(final boolean confirmacionCorreo) {
+    protected void setConfirmacionCorreo(final boolean confirmacionCorreo) {
         this.confirmacionCorreo = confirmacionCorreo;
     }
 
@@ -137,7 +139,7 @@ public class UsuarioDomain {
         return confirmacionTelefono;
     }
 
-    private void setConfirmacionTelefono(final boolean confirmacionTelefono) {
+    protected void setConfirmacionTelefono(final boolean confirmacionTelefono) {
         this.confirmacionTelefono = confirmacionTelefono;
     }
 
@@ -145,8 +147,11 @@ public class UsuarioDomain {
         return estadoCuenta;
     }
 
-    private void setEstadoCuenta(final boolean estadoCuenta) {
+    protected void setEstadoCuenta(final boolean estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
     }
+
 }
+
+
 
