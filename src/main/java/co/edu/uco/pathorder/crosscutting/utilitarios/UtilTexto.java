@@ -12,8 +12,9 @@ public final class UtilTexto {
     );
 
     private static final Pattern PATRON_CONTRASENA = Pattern.compile(
-            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$"
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9\\s])[A-Za-z\\d[^A-Za-z0-9\\s]\\s]{8,}$"
     );
+
     private static final String PATRON_SOLO_NUMEROS = "^[0-9]+$";
 
 

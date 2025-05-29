@@ -13,9 +13,9 @@ public class PruebaConexion {
         String clave = "npg_n0LwiyVuk1dq";
 
         try (Connection conexion = DriverManager.getConnection(url, usuario, clave)) {
-            System.out.println("✅ Conexión exitosa a la base de datos Neon PostgreSQL");
+            System.out.println("Conexión exitosa a la base de datos de PostgreSQL alojada en Neon");
         } catch (Exception exception) {
-            System.out.println("❌ Error al conectar:");
+            System.out.println("Error al conectar:");
             exception.printStackTrace();
         }
     }

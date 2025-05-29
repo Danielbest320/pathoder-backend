@@ -139,8 +139,8 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
         if(!UtilTexto.getInstance().contieneSoloLetrasEspacios(admin.getUsuario())){
             throw BusinessLogicPathOrderException.reportar("El usuario solo debe contener letras y espacios");
         }
-        if(!UtilTexto.getInstance().longitudValida(admin.getUsuario(),1,50)){
-            throw BusinessLogicPathOrderException.reportar("El usuario debe contener entre 1 y 50 caracteres");
+        if(!UtilTexto.getInstance().longitudValida(admin.getUsuario(),5,50)){
+            throw BusinessLogicPathOrderException.reportar("El usuario debe contener entre 5 y 50 caracteres");
         }
         //Validaciones correo
         if (UtilTexto.getInstance().esVacio(admin.getCorreo())) {
@@ -149,8 +149,8 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
         if (!UtilTexto.getInstance().esEmailValido(admin.getCorreo())) {
             throw BusinessLogicPathOrderException.reportar("El formato de correo electrónico no es válido, debe contener @ y .");
         }
-        if(!UtilTexto.getInstance().longitudValida(admin.getCorreo(),1,200)){
-            throw BusinessLogicPathOrderException.reportar("El correo debe contener entre 1 y 200 caracteres");
+        if(!UtilTexto.getInstance().longitudValida(admin.getCorreo(),10,200)){
+            throw BusinessLogicPathOrderException.reportar("El correo debe contener entre 10 y 200 caracteres");
         }
         //Validaciones telefono
         if (UtilTexto.getInstance().esVacio(admin.getTelefono())) {
@@ -160,14 +160,14 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
             throw BusinessLogicPathOrderException.reportar("El Telefono solo puede contener numeros");
         }
         if (!UtilTexto.getInstance().longitudValida(admin.getTelefono(),10,10)){
-            throw BusinessLogicPathOrderException.reportar("El telefono solo puede contener 10 caracteres");
+            throw BusinessLogicPathOrderException.reportar("El telefono debe contener 10 números");
         }
         //Validaciones contrasena
         if (UtilTexto.getInstance().esVacio(admin.getContrasena())) {
-            throw BusinessLogicPathOrderException.reportar("La contrasena es obligatorio");
+            throw BusinessLogicPathOrderException.reportar("La contraseña es obligatorio");
         }
         if (!UtilTexto.getInstance().esContrasenaValida(admin.getContrasena())) {
-            throw BusinessLogicPathOrderException.reportar("La contrasena no es valida, debe contener minimo 8 caracteres, 1 mayuscula, un numero y un caracter especial");
+            throw BusinessLogicPathOrderException.reportar("La contraseña no es valida, debe contener mínimo 8 caracteres, 1 mayuscula, un numero y un caracter especial");
         }
         if(!UtilTexto.getInstance().longitudValida(admin.getContrasena(),8,100)){
             throw BusinessLogicPathOrderException.reportar("La contrasena solo puede contener maximo 100 caracteres ");
