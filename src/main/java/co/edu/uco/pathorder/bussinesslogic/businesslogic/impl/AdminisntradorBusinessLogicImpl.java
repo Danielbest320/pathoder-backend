@@ -147,7 +147,7 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
             throw BusinessLogicPathOrderException.reportar("El correo electrónico es obligatorio");
         }
         if (!UtilTexto.getInstance().esEmailValido(admin.getCorreo())) {
-            throw BusinessLogicPathOrderException.reportar("El formato de correo electrónico no es válido");
+            throw BusinessLogicPathOrderException.reportar("El formato de correo electrónico no es válido, debe contener @ y .");
         }
         if(!UtilTexto.getInstance().longitudValida(admin.getCorreo(),1,200)){
             throw BusinessLogicPathOrderException.reportar("El correo debe contener entre 1 y 200 caracteres");
@@ -160,7 +160,7 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
             throw BusinessLogicPathOrderException.reportar("El Telefono solo puede contener numeros");
         }
         if (!UtilTexto.getInstance().longitudValida(admin.getTelefono(),1,10)){
-            throw BusinessLogicPathOrderException.reportar("El teelfono solo puede contener entre 1 y 10 caracteres");
+            throw BusinessLogicPathOrderException.reportar("El telefono solo puede contener entre 1 y 10 caracteres");
         }
         //Validaciones contrasena
         if (UtilTexto.getInstance().esVacio(admin.getContrasena())) {
@@ -172,6 +172,7 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
         if(!UtilTexto.getInstance().longitudValida(admin.getContrasena(),8,100)){
             throw BusinessLogicPathOrderException.reportar("La contrasena solo puede contener maximo 100 caracteres ");
         }
+
     }
 
     private void validarNoExistanDatosDuplicados(AdministradorDomain admin) throws PathOrderException {
@@ -197,14 +198,13 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
     private boolean calcularEstadoCuenta(boolean estadoCuentaSolicitado, boolean confirmacionCorreo, boolean confirmacionTelefono) throws PathOrderException {
         if (estadoCuentaSolicitado) {
             if (!confirmacionCorreo || !confirmacionTelefono) {
-                throw BusinessLogicPathOrderException.reportar("No se puede activar la cuenta si el correo y el teléfono no están confirmados.");
+                throw BusinessLogicPathOrderException.reportar("No se puede activar la cuenta si el correo y el teléfono no están confirmados. La cuenta se registrará como inactiva.");
             }
             return true;
         }
 
-        // Si ambos están confirmados, pero estadoCuenta viene como false
         if (confirmacionCorreo && confirmacionTelefono) {
-            throw BusinessLogicPathOrderException.reportar("La cuenta será activada automáticamente al confirmar correo y teléfono. No es necesario asignar estadoCuenta = false.");
+            return true;
         }
 
         return false;
