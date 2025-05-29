@@ -109,8 +109,8 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
         if(!UtilTexto.getInstance().contieneSoloNumeros(admin.getDi())){
             throw BusinessLogicPathOrderException.reportar("El Di solo debe contener números");
         }
-        if(!UtilTexto.getInstance().longitudValida(admin.getDi(),1,12)){
-            throw BusinessLogicPathOrderException.reportar("El Di tiene que tener como minimo  1 y maximo 12 numeros");
+        if(!UtilTexto.getInstance().longitudValida(admin.getDi(),7,10)){
+            throw BusinessLogicPathOrderException.reportar("El Di tiene que tener como minimo  7 y maximo 10 numeros");
         }
         //Validaciones nombre
         if (UtilTexto.getInstance().esVacio(admin.getNombre())) {
@@ -159,8 +159,8 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
         if (!UtilTexto.getInstance().contieneSoloNumeros(admin.getTelefono())) {
             throw BusinessLogicPathOrderException.reportar("El Telefono solo puede contener numeros");
         }
-        if (!UtilTexto.getInstance().longitudValida(admin.getTelefono(),1,10)){
-            throw BusinessLogicPathOrderException.reportar("El telefono solo puede contener entre 1 y 10 caracteres");
+        if (!UtilTexto.getInstance().longitudValida(admin.getTelefono(),10,10)){
+            throw BusinessLogicPathOrderException.reportar("El telefono solo puede contener 10 caracteres");
         }
         //Validaciones contrasena
         if (UtilTexto.getInstance().esVacio(admin.getContrasena())) {
