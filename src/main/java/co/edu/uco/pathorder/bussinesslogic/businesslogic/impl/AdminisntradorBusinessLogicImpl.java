@@ -34,6 +34,12 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
 
         String contrasenaEncriptada = UtilSeguridad.encriptar(administrador.getContrasena() );
 
+        boolean estadoCuentaCalculado = calcularEstadoCuenta(
+                administrador.isEstadoCuenta(),
+                administrador.isConfirmacionCorreo(),
+                administrador.isConfirmacionTelefono()
+        );
+
         var adminConId = new AdministradorDomain(
                 nuevoId,
                 administrador.getDi(),
@@ -44,7 +50,7 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
                 contrasenaEncriptada,
                 administrador.isConfirmacionCorreo(),
                 administrador.isConfirmacionTelefono(),
-                administrador.isEstadoCuenta(),
+                estadoCuentaCalculado,
                 administrador.getUsuario()
         );
 
@@ -186,6 +192,22 @@ public class AdminisntradorBusinessLogicImpl  implements AdministradorBusinessLo
                 throw BusinessLogicPathOrderException.reportar("Ya existe un administrador con el mismo número de teléfono.");
             }
         }
+    }
+
+    private boolean calcularEstadoCuenta(boolean estadoCuentaSolicitado, boolean confirmacionCorreo, boolean confirmacionTelefono) throws PathOrderException {
+        if (estadoCuentaSolicitado) {
+            if (!confirmacionCorreo || !confirmacionTelefono) {
+                throw BusinessLogicPathOrderException.reportar("No se puede activar la cuenta si el correo y el teléfono no están confirmados.");
+            }
+            return true;
+        }
+
+        // Si ambos están confirmados, pero estadoCuenta viene como false
+        if (confirmacionCorreo && confirmacionTelefono) {
+            throw BusinessLogicPathOrderException.reportar("La cuenta será activada automáticamente al confirmar correo y teléfono. No es necesario asignar estadoCuenta = false.");
+        }
+
+        return false;
     }
 
 }
